@@ -1,0 +1,31 @@
+{
+  "name": "@crystallize/content-chunk",
+  "version": "0.0.0",
+  "description": "Validation and parsing for CCC",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "toHtml:watch": "nodemon src/converters/toHtml.js"
+  },
+  "repository": {
+    "type": "git",
+    "url":
+      "git+https://github.com/snowballdigital/crystallize-content-chunk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/snowballdigital/crystallize-content-chunk/issues"
+  },
+  "homepage":
+    "https://github.com/snowballdigital/crystallize-content-chunk#readme",
+  "devDependencies": {
+    "jest": "^22.4.4",
+    "nodemon": "^1.17.5"
+  },
+  "dependencies": {
+    "is-my-json-valid": "^2.17.2"
+  }
+}

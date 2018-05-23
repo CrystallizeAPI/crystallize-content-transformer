@@ -1,2 +1,3 @@
 # crystallize-content-chunk
-Validate and parsing for CCC
+
+Validation and parsing for CCC
