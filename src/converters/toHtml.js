@@ -1,14 +1,17 @@
-const { validModels } = require('../../tests/models');
+/* eslint no-param-reassign: 0 */
+const isarray = require('isarray');
 
-function getTagFromNode({ type, style, children, metaData }) {
-  if (type === 'block') {
-    switch (style) {
+function getTagFromNode({ display, type, children, metaData }) {
+  if (display === 'block') {
+    switch (type) {
       case 'paragraph':
         return 'p';
       case 'list':
-        const { listType } = metaData;
-        if (listType && listType === 'ordered') {
-          return 'ol';
+        {
+          const { listType } = metaData;
+          if (listType && listType === 'ordered') {
+            return 'ol';
+          }
         }
         return 'ul';
       case 'listitem':
@@ -16,8 +19,8 @@ function getTagFromNode({ type, style, children, metaData }) {
       default:
         return 'div';
     }
-  } else if (type === 'inline') {
-    switch (style) {
+  } else if (display === 'inline') {
+    switch (type) {
       case 'strong':
         return 'b';
       case 'link':
@@ -38,8 +41,8 @@ const validAttributesMap = {
   link: 'id href target'.split(' ')
 };
 
-function getAttrsFromNode({ metaData, style }) {
-  const validAttributes = validAttributesMap[style];
+function getAttrsFromNode({ metaData, type }) {
+  const validAttributes = validAttributesMap[type];
   if (!validAttributes) {
     return '';
   }
@@ -57,17 +60,6 @@ function getAttrsFromNode({ metaData, style }) {
   }
 
   return ` ${attrs.join(' ')}`;
-}
-
-// Add a reference to the parent for each node
-function addParentToNode(node, parent) {
-  if (parent) {
-    node.parent = parent;
-  }
-
-  if (node.children) {
-    node.children.forEach(n => addParentToNode(n, node));
-  }
 }
 
 function toHtml(model) {
@@ -90,7 +82,11 @@ function toHtml(model) {
     return content;
   }
 
-  return model.map(getHtmlFromNode).join('');
+  if (isarray(model)) {
+    return model.map(getHtmlFromNode).join('');
+  }
+
+  return getHtmlFromNode(model);
 }
 
 module.exports = toHtml;

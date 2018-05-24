@@ -4,9 +4,11 @@
   "description": "Validation and parsing for CCC",
   "main": "dist/index.js",
   "scripts": {
+    "lint": "eslint src",
+    "build": "webpack --mode=production",
     "test": "jest",
     "test:watch": "jest --watch",
-    "toHtml:watch": "nodemon src/converters/toHtml.js"
+    "prepare": "npm run lint && npm run test && npm run build"
   },
   "repository": {
     "type": "git",
@@ -22,10 +24,44 @@
   "homepage":
     "https://github.com/snowballdigital/crystallize-content-chunk#readme",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.1.2",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-import-resolver-babel-module": "^4.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
     "jest": "^22.4.4",
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.17.5",
+    "prettier": "^1.12.1",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^2.1.4"
   },
   "dependencies": {
-    "is-my-json-valid": "^2.17.2"
+    "is-my-json-valid": "^2.17.2",
+    "isarray": "^2.0.4"
+  },
+  "eslintConfig": {
+    "extends": ["airbnb", "prettier"],
+    "plugins": ["prettier"],
+    "parser": "babel-eslint",
+    "settings": {
+      "import/resolver": {
+        "babel-module": {}
+      }
+    },
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true,
+      "jest": true
+    }
   }
 }
