@@ -14,7 +14,7 @@ function toText(model) {
 
     content += node.textContent || node.childrenText || '';
 
-    if (node.display === 'block') {
+    if (node.kind === 'block') {
       content = `\n${content}\n`;
     }
 

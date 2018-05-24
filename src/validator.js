@@ -5,10 +5,10 @@ const schema = {
     node: {
       type: ['object', 'null'],
       properties: {
-        display: {
+        kind: {
           required: true,
           enum: ['block', 'inline'],
-          description: 'The way this node should be displayed'
+          description: 'The node kind'
         },
         type: {
           required: true,
@@ -28,7 +28,7 @@ const schema = {
         },
         textContent: {
           type: 'string',
-          description: 'If set, this is the raw text content to be displayed'
+          description: 'If set, this is the raw text content to be kinded'
         },
         children: {
           type: 'array',
@@ -36,20 +36,20 @@ const schema = {
             $ref: '#/definitions/node'
           }
         },
-        metaData: {
+        metadata: {
           oneOf: [
             {
-              $ref: '#/definitions/metaDataList'
+              $ref: '#/definitions/metadataList'
             },
             {
-              $ref: '#/definitions/metaDataLink'
+              $ref: '#/definitions/metadataLink'
             }
           ]
         }
       }
     },
 
-    metaDataList: {
+    metadataList: {
       type: 'object',
       properties: {
         listType: {
@@ -60,7 +60,7 @@ const schema = {
       }
     },
 
-    metaDataLink: {
+    metadataLink: {
       type: 'object',
       properties: {
         href: {

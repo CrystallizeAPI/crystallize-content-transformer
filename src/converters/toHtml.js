@@ -1,14 +1,14 @@
 /* eslint no-param-reassign: 0 */
 const isarray = require('isarray');
 
-function getTagFromNode({ display, type, children, metaData }) {
-  if (display === 'block') {
+function getTagFromNode({ kind, type, children, metadata }) {
+  if (kind === 'block') {
     switch (type) {
       case 'paragraph':
         return 'p';
       case 'list':
         {
-          const { listType } = metaData;
+          const { listType } = metadata;
           if (listType && listType === 'ordered') {
             return 'ol';
           }
@@ -19,7 +19,7 @@ function getTagFromNode({ display, type, children, metaData }) {
       default:
         return 'div';
     }
-  } else if (display === 'inline') {
+  } else if (kind === 'inline') {
     switch (type) {
       case 'strong':
         return 'b';
@@ -41,7 +41,7 @@ const validAttributesMap = {
   link: 'id href target'.split(' ')
 };
 
-function getAttrsFromNode({ metaData, type }) {
+function getAttrsFromNode({ metadata, type }) {
   const validAttributes = validAttributesMap[type];
   if (!validAttributes) {
     return '';
@@ -49,10 +49,10 @@ function getAttrsFromNode({ metaData, type }) {
 
   const attrs = [];
 
-  if (metaData) {
-    Object.keys(metaData)
+  if (metadata) {
+    Object.keys(metadata)
       .filter(key => validAttributes.includes(key))
-      .forEach(key => attrs.push(`${key}="${metaData[key]}"`));
+      .forEach(key => attrs.push(`${key}="${metadata[key]}"`));
   }
 
   if (!attrs.length) {

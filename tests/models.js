@@ -4,7 +4,7 @@ const invalidModels = {};
 /* The most basic model */
 validModels.singleElement = {
   ccc: {
-    display: 'block',
+    kind: 'block',
     type: 'none',
     textContent: 'Hello'
   }
@@ -13,7 +13,7 @@ validModels.singleElement = {
 /* A top element, styled as a paragraph */
 validModels.singleElementParagraph = {
   ccc: {
-    display: 'block',
+    kind: 'block',
     type: 'paragraph',
     textContent: 'Hello'
   }
@@ -22,7 +22,7 @@ validModels.singleElementParagraph = {
 /* A top element, styled as strong */
 validModels.singleElementStrong = {
   ccc: {
-    display: 'block',
+    kind: 'block',
     type: 'strong',
     textContent: 'Hello'
   }
@@ -31,7 +31,7 @@ validModels.singleElementStrong = {
 /* A top element, styled as emphasized */
 validModels.singleElementEmphasized = {
   ccc: {
-    display: 'block',
+    kind: 'block',
     type: 'emphasized',
     textContent: 'Hello'
   }
@@ -40,7 +40,7 @@ validModels.singleElementEmphasized = {
 /* A top element, styled as quote */
 validModels.singleElementQuote = {
   ccc: {
-    display: 'block',
+    kind: 'block',
     type: 'quote',
     textContent: 'Hello'
   }
@@ -49,21 +49,21 @@ validModels.singleElementQuote = {
 /* A top element with children */
 validModels.withNodeChildren = {
   ccc: {
-    display: 'block',
+    kind: 'block',
     type: 'paragraph',
     children: [
       {
-        display: 'inline',
+        kind: 'inline',
         type: 'none',
         textContent: 'See '
       },
       {
-        display: 'inline',
+        kind: 'inline',
         type: 'strong',
         textContent: 'you'
       },
       {
-        display: 'inline',
+        kind: 'inline',
         type: 'none',
         textContent: ' later'
       }
@@ -74,48 +74,48 @@ validModels.withNodeChildren = {
 /* A complex chunk */
 validModels.complex = {
   ccc: {
-    display: 'block',
+    kind: 'block',
     type: 'none',
     children: [
       {
-        display: 'block',
+        kind: 'block',
         type: 'paragraph',
         children: [
           {
-            display: 'inline',
+            kind: 'inline',
             type: 'strong',
             textContent: 'Hello you'
           }
         ]
       },
       {
-        display: 'inline',
+        kind: 'inline',
         type: 'link',
         textContent: 'How are you ',
-        metaData: {
+        metadata: {
           href: '#',
           target: '_blank'
         }
       },
       {
-        display: 'inline',
+        kind: 'inline',
         type: 'strong',
         textContent: 'doing?'
       },
       {
-        display: 'block',
+        kind: 'block',
         type: 'list',
-        metaData: {
+        metadata: {
           listType: 'ordered'
         },
         children: [
           {
-            display: 'block',
+            kind: 'block',
             type: 'listitem',
             textContent: 'List item 1'
           },
           {
-            display: 'block',
+            kind: 'block',
             type: 'listitem',
             textContent: 'List item 2'
           }
@@ -144,7 +144,7 @@ invalidModels.nodeIsNumber = {
 // The node is an object with invalid type set
 invalidModels.nodeHasInvalidType = {
   ccc: {
-    display: 'bullshit display',
+    kind: 'bullshit kind',
     type: 'none',
     textContent: ''
   }
@@ -153,7 +153,7 @@ invalidModels.nodeHasInvalidType = {
 // The node is an object with invalid Type set
 invalidModels.nodeHasInvalidType = {
   ccc: {
-    display: 'block',
+    kind: 'block',
     type: 'bullshit type',
     textContent: ''
   }
@@ -162,7 +162,7 @@ invalidModels.nodeHasInvalidType = {
 // A children is set, but is not an array
 invalidModels.nodeChildrenIsInvalid = {
   ccc: {
-    display: 'block',
+    kind: 'block',
     type: 'none',
     children: 123
   }
@@ -170,10 +170,10 @@ invalidModels.nodeChildrenIsInvalid = {
 
 invalidModels.nodeIsInvalidLInk = {
   ccc: {
-    display: 'inline',
+    kind: 'inline',
     type: 'link',
     textContent: 'click me',
-    metaData: {
+    metadata: {
       crap: ''
     }
   }
