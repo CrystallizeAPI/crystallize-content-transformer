@@ -1,6 +1,6 @@
 {
   "name": "@crystallize/content-chunk",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Validation and parsing for CCC",
   "main": "dist/index.js",
   "scripts": {
@@ -12,8 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url":
-      "git+https://github.com/snowballdigital/crystallize-content-chunk.git"
+    "url": "git+https://github.com/snowballdigital/crystallize-content-chunk.git"
   },
   "keywords": [],
   "author": "",
@@ -21,8 +20,7 @@
   "bugs": {
     "url": "https://github.com/snowballdigital/crystallize-content-chunk/issues"
   },
-  "homepage":
-    "https://github.com/snowballdigital/crystallize-content-chunk#readme",
+  "homepage": "https://github.com/snowballdigital/crystallize-content-chunk#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -49,8 +47,13 @@
     "isarray": "^2.0.4"
   },
   "eslintConfig": {
-    "extends": ["airbnb", "prettier"],
-    "plugins": ["prettier"],
+    "extends": [
+      "airbnb",
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ],
     "parser": "babel-eslint",
     "settings": {
       "import/resolver": {
