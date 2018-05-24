@@ -1,3 +1,10 @@
+<a name="0.1.0"></a>
+## 0.1.0 (2018-05-24)
+
+* Changed model ([f033a57](https://github.com/snowballdigital/crystallize-content-chunk/commit/f033a57))
+
+
+
 <a name="0.0.1"></a>
 ## <small>0.0.1 (2018-05-24)</small>
 
