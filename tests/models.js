@@ -168,7 +168,8 @@ invalidModels.nodeChildrenIsInvalid = {
   }
 };
 
-invalidModels.nodeIsInvalidLInk = {
+// Wrong metadata for link
+invalidModels.metadataForLinkIsInvalid = {
   ccc: {
     kind: 'inline',
     type: 'link',
@@ -176,6 +177,18 @@ invalidModels.nodeIsInvalidLInk = {
     metadata: {
       crap: ''
     }
+  }
+};
+
+// Wrong metadata for list
+invalidModels.metadataForLinkIsInvalid = {
+  ccc: {
+    kind: 'block',
+    type: 'list',
+    metadata: {
+      listType: 'crap'
+    },
+    children: []
   }
 };
 
