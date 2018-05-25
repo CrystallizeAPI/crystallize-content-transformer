@@ -64,15 +64,16 @@ function getAttrsFromNode({ metadata, type }) {
 
 function toHtml(model) {
   function getHtmlFromNode(node) {
+    let childrenHtml;
     if (node.children) {
-      node.childrenHtml = node.children.reduce(
+      childrenHtml = node.children.reduce(
         (acc, n) => acc + getHtmlFromNode(n),
         ''
       );
     }
 
     const tag = getTagFromNode(node);
-    const content = node.textContent || node.childrenHtml || '';
+    const content = node.textContent || childrenHtml || '';
 
     if (tag) {
       const attrs = getAttrsFromNode(node);

@@ -1,4 +1,4 @@
-const { isModelValid, toHtml } = require('../src');
+const { isModelValid, toHTML, fromHTML } = require('../src');
 const { validModels, invalidModels } = require('./models');
 
 function testModels(collection, expectedResult) {
@@ -13,10 +13,16 @@ function testModels(collection, expectedResult) {
       });
 
       if (model.html) {
-        it(`"${key}" toHtml should ${
+        it(`"${key}" toHTML should ${
           expectedResult ? 'match' : 'not match'
         } the predefined HTML`, () => {
-          expect(toHtml(model.ccc)).toBe(model.html);
+          expect(toHTML(model.ccc)).toBe(model.html);
+        });
+
+        it(`"${key}" fromHTML should ${
+          expectedResult ? 'match' : 'not match'
+        } the ccc model`, () => {
+          expect(fromHTML(model.html)).toEqual(model.ccc);
         });
       }
     });
