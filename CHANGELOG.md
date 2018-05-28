@@ -1,3 +1,10 @@
+<a name="0.3.0"></a>
+## 0.3.0 (2018-05-28)
+
+* Allow for root item to be an array or a single chunk ([31a3784](https://github.com/snowballdigital/crystallize-content-chunk/commit/31a3784))
+
+
+
 <a name="0.2.0"></a>
 ## 0.2.0 (2018-05-25)
 
