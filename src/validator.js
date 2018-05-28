@@ -83,7 +83,17 @@ const schema = {
     }
   },
 
-  $ref: '#/definitions/node'
+  oneOf: [
+    {
+      $ref: '#/definitions/node'
+    },
+    {
+      type: 'array',
+      items: {
+        $ref: '#/definitions/node'
+      }
+    }
+  ]
 };
 
 const isModelValid = validator(schema);

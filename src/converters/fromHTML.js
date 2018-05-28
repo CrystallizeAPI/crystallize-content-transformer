@@ -90,7 +90,11 @@ function fromHTML(html) {
 
   const fragment = parse5.parseFragment(html);
 
-  return parseNode(fragment.childNodes[0]);
+  if (fragment.childNodes.length === 1) {
+    return parseNode(fragment.childNodes[0]);
+  }
+
+  return fragment.childNodes.map(parseNode);
 }
 
 module.exports = fromHTML;

@@ -1,6 +1,11 @@
 const validModels = {};
 const invalidModels = {};
 
+// Empty model
+validModels.nullElement = {
+  ccc: null
+};
+
 /* The most basic model */
 validModels.singleElement = {
   ccc: {
@@ -8,6 +13,17 @@ validModels.singleElement = {
     type: 'none',
     textContent: 'Hello'
   }
+};
+
+/* Basic node, within a root array */
+validModels.arrayAsRoot = {
+  ccc: [
+    {
+      kind: 'block',
+      type: 'none',
+      textContent: 'Hello'
+    }
+  ]
 };
 
 /* A top element, styled as a paragraph */
@@ -73,57 +89,65 @@ validModels.withNodeChildren = {
 
 /* A complex chunk */
 validModels.complex = {
-  ccc: {
-    kind: 'block',
-    type: 'none',
-    children: [
-      {
-        kind: 'block',
-        type: 'paragraph',
-        children: [
-          {
-            kind: 'inline',
-            type: 'strong',
-            textContent: 'Hello you'
-          }
-        ]
-      },
-      {
-        kind: 'inline',
-        type: 'link',
-        textContent: 'How are you ',
-        metadata: {
-          href: '#',
-          target: '_blank'
-        }
-      },
-      {
-        kind: 'inline',
-        type: 'strong',
-        textContent: 'doing?'
-      },
-      {
-        kind: 'block',
-        type: 'list',
-        metadata: {
-          listType: 'ordered'
+  ccc: [
+    {
+      kind: 'block',
+      type: 'none',
+      children: [
+        {
+          kind: 'block',
+          type: 'paragraph',
+          children: [
+            {
+              kind: 'inline',
+              type: 'strong',
+              textContent: 'Hello you'
+            }
+          ]
         },
-        children: [
-          {
-            kind: 'block',
-            type: 'listitem',
-            textContent: 'List item 1'
-          },
-          {
-            kind: 'block',
-            type: 'listitem',
-            textContent: 'List item 2'
+        {
+          kind: 'inline',
+          type: 'link',
+          textContent: 'How are you ',
+          metadata: {
+            href: '#',
+            target: '_blank'
           }
-        ]
-      }
-    ]
-  },
-  html: `<div><p><b>Hello you</b></p><a href="#" target="_blank">How are you </a><b>doing?</b><ol><li>List item 1</li><li>List item 2</li></ol></div>`
+        },
+        {
+          kind: 'inline',
+          type: 'strong',
+          textContent: 'doing?'
+        },
+        {
+          kind: 'block',
+          type: 'list',
+          metadata: {
+            listType: 'ordered'
+          },
+          children: [
+            {
+              kind: 'block',
+              type: 'listitem',
+              textContent: 'List item 1'
+            },
+            {
+              kind: 'block',
+              type: 'listitem',
+              textContent: 'List item 2'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      kind: 'block',
+      type: 'paragraph',
+      textContent: 'Second item'
+    }
+  ],
+  html:
+    '<div><p><b>Hello you</b></p><a href="#" target="_blank">How are you </a><b>doing?</b><ol><li>List item 1</li><li>List item 2</li></ol></div><p>Second item</p>'
 };
 
 // Has fields, but it is empty
@@ -139,6 +163,18 @@ invalidModels.nodeIsString = {
 // The node is a number, not an object
 invalidModels.nodeIsNumber = {
   ccc: 123
+};
+
+// The root array has mixed types
+invalidModels.rootArrayHasMixedTypes = {
+  ccc: [
+    {
+      kind: 'block',
+      type: 'none',
+      textContent: ''
+    },
+    123
+  ]
 };
 
 // The node is an object with invalid type set
