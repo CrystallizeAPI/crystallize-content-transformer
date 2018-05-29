@@ -1,3 +1,11 @@
+<a name="0.4.0"></a>
+## 0.4.0 (2018-05-29)
+
+* Added schema versioning ([5c94fad](https://github.com/snowballdigital/crystallize-content-chunk/commit/5c94fad))
+* Support for more HTML elements ([1b03fce](https://github.com/snowballdigital/crystallize-content-chunk/commit/1b03fce))
+
+
+
 <a name="0.3.0"></a>
 ## 0.3.0 (2018-05-28)
 
