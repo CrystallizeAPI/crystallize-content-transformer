@@ -1,3 +1,10 @@
+<a name="0.5.2"></a>
+## <small>0.5.2 (2018-05-29)</small>
+
+* Build in dev mode ([e4b190b](https://github.com/snowballdigital/crystallize-content-chunk/commit/e4b190b))
+
+
+
 <a name="0.5.1"></a>
 ## <small>0.5.1 (2018-05-29)</small>
 
