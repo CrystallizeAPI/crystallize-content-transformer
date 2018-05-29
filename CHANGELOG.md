@@ -1,3 +1,10 @@
+<a name="0.5.0"></a>
+## 0.5.0 (2018-05-29)
+
+* Allow anything in metadata ([fa94b68](https://github.com/snowballdigital/crystallize-content-chunk/commit/fa94b68))
+
+
+
 <a name="0.4.0"></a>
 ## 0.4.0 (2018-05-29)
 
