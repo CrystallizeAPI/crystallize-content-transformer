@@ -1,3 +1,10 @@
+<a name="0.5.1"></a>
+## <small>0.5.1 (2018-05-29)</small>
+
+* Changed folder structure ([b7cb09b](https://github.com/snowballdigital/crystallize-content-chunk/commit/b7cb09b))
+
+
+
 <a name="0.5.0"></a>
 ## 0.5.0 (2018-05-29)
 
