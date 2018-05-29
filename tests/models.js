@@ -10,7 +10,7 @@ validModels.nullElement = {
 validModels.singleElement = {
   ccc: {
     kind: 'block',
-    type: 'none',
+    type: null,
     textContent: 'Hello'
   }
 };
@@ -20,7 +20,7 @@ validModels.arrayAsRoot = {
   ccc: [
     {
       kind: 'block',
-      type: 'none',
+      type: null,
       textContent: 'Hello'
     }
   ]
@@ -35,11 +35,11 @@ validModels.singleElementParagraph = {
   }
 };
 
-/* A top element, styled as strong */
-validModels.singleElementStrong = {
+/* A top element, styled as emphasized */
+validModels.singleElementEmphasized = {
   ccc: {
     kind: 'block',
-    type: 'strong',
+    type: 'emphasized',
     textContent: 'Hello'
   }
 };
@@ -62,6 +62,18 @@ validModels.singleElementQuote = {
   }
 };
 
+/* A top element, with shared metadata */
+validModels.singleElementSharedMetadata = {
+  ccc: {
+    kind: 'block',
+    type: null,
+    textContent: 'Hello',
+    metadata: {
+      id: 'my-id'
+    }
+  }
+};
+
 /* A top element with children */
 validModels.withNodeChildren = {
   ccc: {
@@ -70,17 +82,17 @@ validModels.withNodeChildren = {
     children: [
       {
         kind: 'inline',
-        type: 'none',
+        type: null,
         textContent: 'See '
       },
       {
         kind: 'inline',
-        type: 'strong',
+        type: 'emphasized',
         textContent: 'you'
       },
       {
         kind: 'inline',
-        type: 'none',
+        type: null,
         textContent: ' later'
       }
     ]
@@ -92,7 +104,7 @@ validModels.complex = {
   ccc: [
     {
       kind: 'block',
-      type: 'none',
+      type: null,
       children: [
         {
           kind: 'block',
@@ -100,7 +112,7 @@ validModels.complex = {
           children: [
             {
               kind: 'inline',
-              type: 'strong',
+              type: 'emphasized',
               textContent: 'Hello you'
             }
           ]
@@ -116,24 +128,21 @@ validModels.complex = {
         },
         {
           kind: 'inline',
-          type: 'strong',
+          type: 'emphasized',
           textContent: 'doing?'
         },
         {
           kind: 'block',
-          type: 'list',
-          metadata: {
-            listType: 'ordered'
-          },
+          type: 'ordered-list',
           children: [
             {
               kind: 'block',
-              type: 'listitem',
+              type: 'list-item',
               textContent: 'List item 1'
             },
             {
               kind: 'block',
-              type: 'listitem',
+              type: 'list-item',
               textContent: 'List item 2'
             }
           ]
@@ -147,7 +156,7 @@ validModels.complex = {
     }
   ],
   html:
-    '<div><p><b>Hello you</b></p><a href="#" target="_blank">How are you </a><b>doing?</b><ol><li>List item 1</li><li>List item 2</li></ol></div><p>Second item</p>'
+    '<div><p><em>Hello you</em></p><a href="#" target="_blank">How are you </a><em>doing?</em><ol><li>List item 1</li><li>List item 2</li></ol></div><p>Second item</p>'
 };
 
 // Has fields, but it is empty
@@ -170,7 +179,7 @@ invalidModels.rootArrayHasMixedTypes = {
   ccc: [
     {
       kind: 'block',
-      type: 'none',
+      type: null,
       textContent: ''
     },
     123
@@ -181,7 +190,7 @@ invalidModels.rootArrayHasMixedTypes = {
 invalidModels.nodeHasInvalidType = {
   ccc: {
     kind: 'bullshit kind',
-    type: 'none',
+    type: null,
     textContent: ''
   }
 };
@@ -199,32 +208,8 @@ invalidModels.nodeHasInvalidType = {
 invalidModels.nodeChildrenIsInvalid = {
   ccc: {
     kind: 'block',
-    type: 'none',
+    type: null,
     children: 123
-  }
-};
-
-// Wrong metadata for link
-invalidModels.metadataForLinkIsInvalid = {
-  ccc: {
-    kind: 'inline',
-    type: 'link',
-    textContent: 'click me',
-    metadata: {
-      crap: ''
-    }
-  }
-};
-
-// Wrong metadata for list
-invalidModels.metadataForLinkIsInvalid = {
-  ccc: {
-    kind: 'block',
-    type: 'list',
-    metadata: {
-      listType: 'crap'
-    },
-    children: []
   }
 };
 

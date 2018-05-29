@@ -1,0 +1,248 @@
+const HTMLElementToTypeMap = {
+  a: {
+    kind: 'inline',
+    type: 'link'
+  },
+  abbr: {
+    kind: 'inline',
+    type: 'abbrevition'
+  },
+  acronym: {
+    kind: 'inline',
+    type: 'abbrevition'
+  },
+  address: {
+    kind: 'block',
+    type: 'address'
+  },
+  article: {
+    kind: 'block',
+    type: 'article'
+  },
+  aside: {
+    kind: 'inline',
+    type: 'aside'
+  },
+  quote: {
+    kind: 'block',
+    type: 'quote'
+  },
+  br: {
+    kind: 'block',
+    type: 'line-break'
+  },
+  caption: {
+    kind: 'block',
+    type: 'table-caption'
+  },
+  cite: {
+    kind: 'block',
+    type: 'title-of-a-work'
+  },
+  code: {
+    kind: 'block',
+    type: 'code'
+  },
+  del: {
+    kind: 'block',
+    type: 'deleted'
+  },
+  details: {
+    kind: 'block',
+    type: 'details'
+  },
+  div: {
+    kind: 'block',
+    type: null
+  },
+  em: {
+    kind: 'inline',
+    type: 'emphasized'
+  },
+  b: {
+    kind: 'inline',
+    type: 'emphasized'
+  },
+  figcaption: {
+    kind: 'block',
+    type: 'figcaption'
+  },
+  figure: {
+    kind: 'block',
+    type: 'figure'
+  },
+  h1: {
+    kind: 'block',
+    type: 'heading1'
+  },
+  h2: {
+    kind: 'block',
+    type: 'heading2'
+  },
+  h3: {
+    kind: 'block',
+    type: 'heading3'
+  },
+  h4: {
+    kind: 'block',
+    type: 'heading4'
+  },
+  h5: {
+    kind: 'block',
+    type: 'heading5'
+  },
+  h6: {
+    kind: 'block',
+    type: 'heading6'
+  },
+  hr: {
+    kind: 'block',
+    type: 'horizontal-line'
+  },
+  i: {
+    kind: 'inline',
+    type: 'italic'
+  },
+  img: {
+    kind: 'block',
+    type: 'image'
+  },
+  li: {
+    kind: 'block',
+    type: 'list-item'
+  },
+  main: {
+    kind: 'block',
+    type: null
+  },
+  mark: {
+    kind: 'inline',
+    type: 'highlight'
+  },
+  ol: {
+    kind: 'block',
+    type: 'ordered-list'
+  },
+  p: {
+    kind: 'block',
+    type: 'paragraph'
+  },
+  picture: {
+    kind: 'block',
+    type: 'picture'
+  },
+  section: {
+    kind: 'block',
+    type: 'section'
+  },
+  span: {
+    kind: 'inline',
+    type: null
+  },
+  strong: {
+    kind: 'inline',
+    type: 'emphasized'
+  },
+  sub: {
+    kind: 'inline',
+    type: 'subscripted'
+  },
+  sup: {
+    kind: 'inline',
+    type: 'superscripted'
+  },
+  table: {
+    kind: 'block',
+    type: 'table'
+  },
+  tbody: {
+    kind: 'block',
+    type: 'table-body'
+  },
+  td: {
+    kind: 'block',
+    type: 'table-cell'
+  },
+  tfoot: {
+    kind: 'block',
+    type: 'table-footer'
+  },
+  th: {
+    kind: 'block',
+    type: 'table-head-cell'
+  },
+  thead: {
+    kind: 'block',
+    type: 'table-head'
+  },
+  time: {
+    kind: 'inline',
+    type: 'time'
+  },
+  tr: {
+    kind: 'block',
+    type: 'table-row'
+  },
+  u: {
+    kind: 'inline',
+    type: 'underlined'
+  },
+  ul: {
+    kind: 'block',
+    type: 'unordered-list'
+  }
+};
+
+const keys = Object.keys(HTMLElementToTypeMap);
+
+function findHTMLTagByChunk({ kind, type, metadata = {} }) {
+  for (let x = 0; x < keys.length; x++) {
+    const tagName = keys[x];
+    const item = HTMLElementToTypeMap[tagName];
+
+    let match = item.kind === kind && item.type === type;
+
+    // Special check if metadata is provided
+    if (match && item.metadata && metadata) {
+      const targetMetadataMatches = Object.keys(item.metadata).reduce(
+        (acc, key) => {
+          if (item.metadata[key] !== metadata[key]) {
+            return false;
+          }
+          return acc;
+        },
+        true
+      );
+      if (!targetMetadataMatches) {
+        match = false;
+      }
+    }
+
+    if (match) {
+      return {
+        tagName,
+        definition: item
+      };
+    }
+  }
+  return null;
+}
+
+// The shared valid attributes
+const sharedValidAttributes = 'id'.split(' ');
+
+// The valid attributes for each element
+const validAttributesMap = {
+  a: [...sharedValidAttributes, ...'href target'.split(' ')]
+};
+
+function getValidAttributesFromTagName(tagName) {
+  return validAttributesMap[tagName] || sharedValidAttributes;
+}
+
+module.exports = {
+  HTMLElementToTypeMap,
+  findHTMLTagByChunk,
+  validAttributesMap,
+  getValidAttributesFromTagName
+};

@@ -1,31 +1,9 @@
 const parse5 = require('parse5');
 
-const blockElements = 'div figure p table ul ol li'.split(' ');
-const htmlTagNameToType = {
-  div: 'none',
-  span: 'none',
-  p: 'paragraph',
-  ul: 'list',
-  ol: 'list',
-  li: 'listitem',
-  a: 'link',
-  b: 'strong',
-  strong: 'strong'
-};
+const { HTMLElementToTypeMap, validAttributesMap } = require('./shared');
 
-const validAttrsMap = {
-  a: ['href', 'target']
-};
-
-function getKindFromNode({ tagName }) {
-  if (blockElements.includes(tagName)) {
-    return 'block';
-  }
-  return 'inline';
-}
-
-function getTypeFromNode({ tagName }) {
-  return htmlTagNameToType[tagName];
+function getChunkDefinition({ tagName }) {
+  return HTMLElementToTypeMap[tagName];
 }
 
 function getTextContent(node) {
@@ -40,7 +18,7 @@ function getTextContent(node) {
 function getMetadataFromNode(node) {
   const metadata = {};
 
-  const validAttrs = validAttrsMap[node.tagName];
+  const validAttrs = validAttributesMap[node.tagName];
   if (validAttrs) {
     validAttrs.forEach(attr => {
       const attrOnNode = node.attrs.find(a => a.name === attr);
@@ -48,11 +26,6 @@ function getMetadataFromNode(node) {
         metadata[attr] = attrOnNode.value;
       }
     });
-  }
-
-  // List has implied metadata from the type
-  if (['ul', 'ol'].includes(node.tagName)) {
-    metadata.listType = node.tagName === 'ul' ? 'unordered' : 'ordered';
   }
 
   if (Object.keys(metadata).length > 0) {
@@ -65,12 +38,17 @@ function getMetadataFromNode(node) {
 function parseNode(node) {
   const chunk = {};
 
-  chunk.kind = getKindFromNode(node);
-  chunk.type = getTypeFromNode(node);
+  const chunkDefinition = getChunkDefinition(node);
+  if (chunkDefinition) {
+    Object.assign(chunk, chunkDefinition);
+  }
 
   const metadata = getMetadataFromNode(node);
   if (metadata) {
-    chunk.metadata = metadata;
+    if (!chunk.metadata) {
+      chunk.metadata = {};
+    }
+    Object.assign(chunk.metadata, metadata);
   }
 
   const textContent = getTextContent(node);
