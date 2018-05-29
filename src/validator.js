@@ -2,7 +2,7 @@ const validator = require('is-my-json-valid');
 
 const schema = {
   title: 'Crystallize Content Chunk model',
-  version: '0.0.2',
+  version: '0.0.3',
 
   definitions: {
     chunk: {
@@ -67,63 +67,21 @@ const schema = {
         },
         textContent: {
           type: 'string',
+          required: false,
           description: 'If set, this is the raw text content'
         },
         children: {
           type: 'array',
+          required: false,
           items: {
             $ref: '#/definitions/chunk'
           }
         },
         metadata: {
-          type: 'object'
-          // oneOf: [
-          //   {
-          //     $ref: '#/definitions/metadataShared'
-          //   },
-          //   {
-          //     $ref: '#/definitions/metadataList'
-          //   },
-          //   {
-          //     $ref: '#/definitions/metadataLink'
-          //   }
-          // ]
+          type: 'object',
+          required: false
         }
       }
-    },
-
-    metadataShared: {
-      properties: {
-        id: {
-          description:
-            'In HTML, this is a unique identifier used to make anchor links',
-          required: false,
-          type: 'string'
-        }
-      }
-    },
-
-    metadataLink: {
-      allOf: [
-        {
-          $ref: '#/definitions/metadataShared'
-        },
-        {
-          properties: {
-            href: {
-              description: 'The destination to link to',
-              required: true,
-              type: 'string'
-            },
-            target: {
-              description:
-                'In HTML, this defines in which window the link openes',
-              required: false,
-              type: 'string'
-            }
-          }
-        }
-      ]
     }
   },
 
