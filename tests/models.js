@@ -71,7 +71,8 @@ validModels.singleElementSharedMetadata = {
     metadata: {
       id: 'my-id'
     }
-  }
+  },
+  html: '<div id="my-id">Hello</div>'
 };
 
 /* A top element with children */

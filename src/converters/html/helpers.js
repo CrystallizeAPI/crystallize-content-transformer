@@ -229,14 +229,14 @@ function findHTMLTagByChunk({ kind, type, metadata = {} }) {
 }
 
 // The shared valid attributes
-const sharedValidAttributes = 'id'.split(' ');
+const sharedValidAttributes = ['id'];
 
 // The valid attributes for each element
 const validAttributesMap = {
-  a: [...sharedValidAttributes, ...'href target'.split(' ')]
+  a: [...sharedValidAttributes, 'href', 'target']
 };
 
-function getValidAttributesFromTagName(tagName) {
+function getValidAttributes({ tagName }) {
   return validAttributesMap[tagName] || sharedValidAttributes;
 }
 
@@ -244,5 +244,5 @@ module.exports = {
   HTMLElementToTypeMap,
   findHTMLTagByChunk,
   validAttributesMap,
-  getValidAttributesFromTagName
+  getValidAttributes
 };

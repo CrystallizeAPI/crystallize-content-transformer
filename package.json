@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint src",
-    "build": "webpack --mode=production",
+    "build": "webpack --mode=development",
     "test": "jest",
     "test:watch": "jest --watch",
     "prepare": "npm run lint && npm run test && npm run build",
@@ -13,7 +13,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snowballdigital/crystallize-content-chunk.git"
+    "url":
+      "git+https://github.com/snowballdigital/crystallize-content-chunk.git"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +22,8 @@
   "bugs": {
     "url": "https://github.com/snowballdigital/crystallize-content-chunk/issues"
   },
-  "homepage": "https://github.com/snowballdigital/crystallize-content-chunk#readme",
+  "homepage":
+    "https://github.com/snowballdigital/crystallize-content-chunk#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -50,13 +52,8 @@
     "parse5": "^5.0.0"
   },
   "eslintConfig": {
-    "extends": [
-      "airbnb",
-      "prettier"
-    ],
-    "plugins": [
-      "prettier"
-    ],
+    "extends": ["airbnb", "prettier"],
+    "plugins": ["prettier"],
     "parser": "babel-eslint",
     "settings": {
       "import/resolver": {

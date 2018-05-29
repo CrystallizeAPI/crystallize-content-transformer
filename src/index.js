@@ -1,10 +1,10 @@
 const { isModelValid, isModelValidVerbose } = require('./validator');
-const { toHTML, toText, fromHTML } = require('./converters');
+const { toText, toHTML, fromHTML } = require('./converters');
 
 module.exports = {
   isModelValid,
   isModelValidVerbose,
-  toHTML,
   toText,
+  toHTML,
   fromHTML
 };

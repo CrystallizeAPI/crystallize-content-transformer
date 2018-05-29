@@ -1,9 +1,9 @@
 const parse5 = require('parse5');
 
-const { HTMLElementToTypeMap, validAttributesMap } = require('./shared');
+const helpers = require('./helpers');
 
 function getChunkDefinition({ tagName }) {
-  return HTMLElementToTypeMap[tagName];
+  return helpers.HTMLElementToTypeMap[tagName];
 }
 
 function getTextContent(node) {
@@ -18,7 +18,7 @@ function getTextContent(node) {
 function getMetadataFromNode(node) {
   const metadata = {};
 
-  const validAttrs = validAttributesMap[node.tagName];
+  const validAttrs = helpers.getValidAttributes(node);
   if (validAttrs) {
     validAttrs.forEach(attr => {
       const attrOnNode = node.attrs.find(a => a.name === attr);
@@ -35,13 +35,18 @@ function getMetadataFromNode(node) {
   return null;
 }
 
-function parseNode(node) {
-  const chunk = {};
+function chunkHasContent(chunk) {
+  return !!chunk;
+}
 
+function parseChunk(node) {
   const chunkDefinition = getChunkDefinition(node);
-  if (chunkDefinition) {
-    Object.assign(chunk, chunkDefinition);
+  if (!chunkDefinition) {
+    return null;
   }
+
+  const chunk = {};
+  Object.assign(chunk, chunkDefinition);
 
   const metadata = getMetadataFromNode(node);
   if (metadata) {
@@ -54,8 +59,10 @@ function parseNode(node) {
   const textContent = getTextContent(node);
   if (textContent) {
     chunk.textContent = textContent;
-  } else if (node.childNodes) {
-    chunk.children = [...node.childNodes].map(parseNode);
+  } else if (node.childNodes && node.childNodes.length > 0) {
+    chunk.children = [...node.childNodes]
+      .map(parseChunk)
+      .filter(chunkHasContent);
   }
 
   return chunk;
@@ -69,10 +76,10 @@ function fromHTML(html) {
   const fragment = parse5.parseFragment(html);
 
   if (fragment.childNodes.length === 1) {
-    return parseNode(fragment.childNodes[0]);
+    return parseChunk(fragment.childNodes[0]);
   }
 
-  return fragment.childNodes.map(parseNode);
+  return fragment.childNodes.map(parseChunk).filter(chunkHasContent);
 }
 
 module.exports = fromHTML;

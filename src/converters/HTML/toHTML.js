@@ -1,13 +1,10 @@
 /* eslint no-param-reassign: 0 */
 const isarray = require('isarray');
 
-const {
-  findHTMLTagByChunk,
-  getValidAttributesFromTagName
-} = require('./shared');
+const helpers = require('./helpers');
 
-function getTagFromNode({ kind, type, metadata }) {
-  const mapInstance = findHTMLTagByChunk({ kind, type, metadata });
+function getTagFromChunk({ kind, type, metadata }) {
+  const mapInstance = helpers.findHTMLTagByChunk({ kind, type, metadata });
   if (mapInstance) {
     return mapInstance.tagName;
   }
@@ -15,53 +12,57 @@ function getTagFromNode({ kind, type, metadata }) {
   return null;
 }
 
-function getAttrs({ tagName, metadata }) {
-  const validAttributes = getValidAttributesFromTagName(tagName);
+function getAttributes({ tagName, metadata }) {
+  const validAttributes = helpers.getValidAttributes({ tagName });
   if (!validAttributes) {
     return '';
   }
 
-  const attrs = [];
+  const attributes = [];
 
   if (metadata) {
     Object.keys(metadata)
       .filter(key => validAttributes.includes(key))
-      .forEach(key => attrs.push(`${key}="${metadata[key]}"`));
+      .forEach(key => attributes.push(`${key}="${metadata[key]}"`));
   }
 
-  if (!attrs.length) {
+  if (!attributes.length) {
     return '';
   }
 
-  return ` ${attrs.join(' ')}`;
+  return ` ${attributes.join(' ')}`;
 }
 
-function toHtml(model) {
-  function getHtmlFromNode(node) {
-    let childrenHtml;
-    if (node.children) {
-      childrenHtml = node.children.reduce(
-        (acc, n) => acc + getHtmlFromNode(n),
-        ''
-      );
-    }
+function getHtmlFromChunk(chunk) {
+  let childrenHtml;
+  if (isarray(chunk.children)) {
+    childrenHtml = chunk.children.reduce(
+      (acc, n) => acc + getHtmlFromChunk(n),
+      ''
+    );
+  }
 
-    const tagName = getTagFromNode(node);
-    const content = node.textContent || childrenHtml || '';
+  const tagName = getTagFromChunk(chunk);
+  const content = chunk.textContent || childrenHtml || '';
 
-    if (tagName) {
-      const attrs = getAttrs({ tagName, ...node });
-      return `<${tagName}${attrs}>${content}</${tagName}>`;
-    }
+  if (tagName) {
+    const attrs = getAttributes({ tagName, ...chunk });
+    return `<${tagName}${attrs}>${content}</${tagName}>`;
+  }
 
-    return content;
+  return content;
+}
+
+function toHTML(model) {
+  if (!model) {
+    return '';
   }
 
   if (isarray(model)) {
-    return model.map(getHtmlFromNode).join('');
+    return model.map(getHtmlFromChunk).join('');
   }
 
-  return getHtmlFromNode(model);
+  return getHtmlFromChunk(model);
 }
 
-module.exports = toHtml;
+module.exports = toHTML;
