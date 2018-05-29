@@ -28,4 +28,4 @@ function toText(model) {
   return getTextFromNode(model);
 }
 
-module.exports = toText;
+module.exports = { toText };
