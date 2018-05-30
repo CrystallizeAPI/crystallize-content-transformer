@@ -1,8 +1,3 @@
 const { fromHTML } = require('./src');
 
-console.log(
-  fromHTML(`
-<p>sasd</p>
-<p>asd</p>@
-`)
-);
+console.log(fromHTML(`<p>hello <i>you</i> <i>dude</i></p>`));

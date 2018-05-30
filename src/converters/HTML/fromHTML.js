@@ -53,6 +53,23 @@ function getMetadataFromNode(node) {
   return null;
 }
 
+const nodeTypesThatCannotHaveDirectTextChildren = 'ul ol table thead tbody tfoot tr th td img'.split(
+  ' '
+);
+
+function nodeHasContent(node) {
+  if (node.nodeName === '#text') {
+    if (
+      nodeTypesThatCannotHaveDirectTextChildren.includes(
+        node.parentNode.nodeName
+      )
+    ) {
+      return false;
+    }
+  }
+  return true;
+}
+
 function chunkHasContent(chunk) {
   // Empty, inline chunks
   if (
@@ -90,6 +107,7 @@ function parseChunk(node) {
     chunk.textContent = textContent;
   } else if (node.childNodes && node.childNodes.length > 0) {
     chunk.children = Array.from(node.childNodes)
+      .filter(nodeHasContent)
       .map(parseChunk)
       .filter(chunkHasContent);
   }
