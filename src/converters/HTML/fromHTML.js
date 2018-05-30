@@ -15,15 +15,19 @@ function getChunkDefinition({ tagName }) {
 }
 
 function getTextContent(node) {
+  function stripLineBreaks(text = '') {
+    return text.replace(/\r?\n|\r/g, '');
+  }
+
   if (node.nodeName === '#text') {
-    return node.value;
+    return stripLineBreaks(node.value);
   }
 
   return (
     node.childNodes &&
     node.childNodes.length === 1 &&
     node.childNodes[0].nodeName === '#text' &&
-    node.childNodes[0].value
+    stripLineBreaks(node.childNodes[0].value)
   );
 }
 
@@ -50,7 +54,21 @@ function getMetadataFromNode(node) {
 }
 
 function chunkHasContent(chunk) {
-  return !!chunk;
+  // Empty, inline chunks
+  if (
+    chunk &&
+    chunk.kind === 'inline' &&
+    chunk.type === null &&
+    !chunk.textContent
+  ) {
+    return false;
+  }
+
+  if (chunk) {
+    return true;
+  }
+
+  return false;
 }
 
 function parseChunk(node) {
