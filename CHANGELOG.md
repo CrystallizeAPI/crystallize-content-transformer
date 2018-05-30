@@ -1,3 +1,10 @@
+<a name="0.5.5"></a>
+## <small>0.5.5 (2018-05-30)</small>
+
+* Small tweak to not allow empty inline elements as children of certain elements ([2eae4ca](https://github.com/snowballdigital/crystallize-content-chunk/commit/2eae4ca))
+
+
+
 <a name="0.5.4"></a>
 ## <small>0.5.4 (2018-05-30)</small>
 
