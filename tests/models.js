@@ -101,6 +101,36 @@ validModels.withNodeChildren = {
   html: '<p>See <em>you</em> later</p>'
 };
 
+validModels.withEmptyTextChilds = {
+  ccc: {
+    kind: 'block',
+    type: 'paragraph',
+    children: [
+      {
+        kind: 'inline',
+        type: null,
+        textContent: 'Hello '
+      },
+      {
+        kind: 'inline',
+        type: 'emphasized',
+        textContent: 'you'
+      },
+      {
+        kind: 'inline',
+        type: null,
+        textContent: ' '
+      },
+      {
+        kind: 'inline',
+        type: 'emphasized',
+        textContent: 'dog'
+      }
+    ]
+  },
+  html: '<p>Hello <em>you</em> <em>dog</em></p>'
+};
+
 /* A complex chunk */
 validModels.complex = {
   ccc: [
