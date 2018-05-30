@@ -1,3 +1,10 @@
+<a name="0.5.4"></a>
+## <small>0.5.4 (2018-05-30)</small>
+
+* Fixed toHTML of empty inline types with line breaks in textContent ([eacb1b8](https://github.com/snowballdigital/crystallize-content-chunk/commit/eacb1b8))
+
+
+
 <a name="0.5.3"></a>
 ## <small>0.5.3 (2018-05-30)</small>
 
