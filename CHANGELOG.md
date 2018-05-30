@@ -1,3 +1,10 @@
+<a name="0.5.3"></a>
+## <small>0.5.3 (2018-05-30)</small>
+
+* Fixed toHTML with missin span/inline elements ([023c89e](https://github.com/snowballdigital/crystallize-content-chunk/commit/023c89e))
+
+
+
 <a name="0.5.2"></a>
 ## <small>0.5.2 (2018-05-29)</small>
 
