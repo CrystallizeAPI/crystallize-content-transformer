@@ -1,6 +1,5 @@
-const { isModelValidVerbose } = require('./src');
+const { fromHTML } = require('./src');
 
 const { validModels } = require('./tests/models');
 
-console.log(isModelValidVerbose(validModels.singleElementSharedMetadata.ccc));
-console.log(isModelValidVerbose.errors);
+console.log(fromHTML(`<p>asd<b>hello</b><i>Yes</i></p>`));

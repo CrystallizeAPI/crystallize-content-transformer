@@ -97,7 +97,8 @@ validModels.withNodeChildren = {
         textContent: ' later'
       }
     ]
-  }
+  },
+  html: '<p>See <em>you</em> later</p>'
 };
 
 /* A complex chunk */

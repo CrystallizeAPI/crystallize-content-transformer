@@ -3,10 +3,22 @@ const parse5 = require('parse5');
 const helpers = require('./helpers');
 
 function getChunkDefinition({ tagName }) {
-  return helpers.HTMLElementToTypeMap[tagName];
+  const definition = helpers.HTMLElementToTypeMap[tagName];
+  if (definition) {
+    return definition;
+  }
+
+  return {
+    kind: 'inline',
+    type: null
+  };
 }
 
 function getTextContent(node) {
+  if (node.nodeName === '#text') {
+    return node.value;
+  }
+
   return (
     node.childNodes &&
     node.childNodes.length === 1 &&
@@ -18,14 +30,16 @@ function getTextContent(node) {
 function getMetadataFromNode(node) {
   const metadata = {};
 
-  const validAttrs = helpers.getValidAttributes(node);
-  if (validAttrs) {
-    validAttrs.forEach(attr => {
-      const attrOnNode = node.attrs.find(a => a.name === attr);
-      if (attrOnNode) {
-        metadata[attr] = attrOnNode.value;
-      }
-    });
+  if (node.attrs && node.attrs.length > 0) {
+    const validAttrs = helpers.getValidAttributes(node);
+    if (validAttrs) {
+      validAttrs.forEach(attr => {
+        const attrOnNode = node.attrs.find(a => a.name === attr);
+        if (attrOnNode) {
+          metadata[attr] = attrOnNode.value;
+        }
+      });
+    }
   }
 
   if (Object.keys(metadata).length > 0) {
@@ -41,9 +55,6 @@ function chunkHasContent(chunk) {
 
 function parseChunk(node) {
   const chunkDefinition = getChunkDefinition(node);
-  if (!chunkDefinition) {
-    return null;
-  }
 
   const chunk = {};
   Object.assign(chunk, chunkDefinition);
@@ -60,7 +71,7 @@ function parseChunk(node) {
   if (textContent) {
     chunk.textContent = textContent;
   } else if (node.childNodes && node.childNodes.length > 0) {
-    chunk.children = [...node.childNodes]
+    chunk.children = Array.from(node.childNodes)
       .map(parseChunk)
       .filter(chunkHasContent);
   }

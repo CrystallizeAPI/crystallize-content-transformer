@@ -34,6 +34,11 @@ function getAttributes({ tagName, metadata }) {
 }
 
 function getHtmlFromChunk(chunk) {
+  const tagName = getTagFromChunk(chunk);
+  if (tagName === 'span' && chunk.textContent) {
+    return chunk.textContent;
+  }
+
   let childrenHtml;
   if (isarray(chunk.children)) {
     childrenHtml = chunk.children.reduce(
@@ -42,7 +47,6 @@ function getHtmlFromChunk(chunk) {
     );
   }
 
-  const tagName = getTagFromChunk(chunk);
   const content = chunk.textContent || childrenHtml || '';
 
   if (tagName) {
