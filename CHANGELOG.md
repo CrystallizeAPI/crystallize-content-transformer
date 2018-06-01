@@ -1,3 +1,9 @@
+## <small>0.6.1 (2018-06-01)</small>
+
+* Bugfix. Expose schema at root level ([e8d5370](https://github.com/snowballdigital/crystallize-content-chunk/commit/e8d5370))
+
+
+
 ## 0.6.0 (2018-06-01)
 
 * Added test for inline null with empty content ([ad48671](https://github.com/snowballdigital/crystallize-content-chunk/commit/ad48671))
