@@ -1,3 +1,10 @@
+<a name="0.6.2"></a>
+## <small>0.6.2 (2018-06-06)</small>
+
+* Fixed toHTML for br tag ([b3802a4](https://github.com/snowballdigital/crystallize-content-chunk/commit/b3802a4))
+
+
+
 ## <small>0.6.1 (2018-06-01)</small>
 
 * Bugfix. Expose schema at root level ([e8d5370](https://github.com/snowballdigital/crystallize-content-chunk/commit/e8d5370))
