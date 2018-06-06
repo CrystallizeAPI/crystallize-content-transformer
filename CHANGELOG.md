@@ -1,3 +1,10 @@
+<a name="0.6.3"></a>
+## <small>0.6.3 (2018-06-06)</small>
+
+* Bugfixes ([99a077c](https://github.com/snowballdigital/crystallize-content-chunk/commit/99a077c))
+
+
+
 <a name="0.6.2"></a>
 ## <small>0.6.2 (2018-06-06)</small>
 
