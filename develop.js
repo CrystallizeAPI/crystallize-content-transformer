@@ -1,3 +1,31 @@
-const { fromHTML } = require('./src');
+const { isModelValid } = require('./src');
 
-console.log(fromHTML(`<p>hello <i>you</i> <i>dude</i></p>`));
+console.log(
+  isModelValid([
+    {
+      kind: 'block',
+      type: 'paragraph',
+      textContent: 'dsa'
+    },
+    {
+      kind: 'block',
+      type: 'paragraph',
+      textContent: 'asd'
+    },
+    {
+      kind: 'block',
+      type: 'paragraph',
+      textContent: 'ads'
+    },
+    {
+      kind: 'block',
+      type: 'paragraph',
+      children: [
+        {
+          kind: 'block',
+          type: 'line-break'
+        }
+      ]
+    }
+  ])
+);

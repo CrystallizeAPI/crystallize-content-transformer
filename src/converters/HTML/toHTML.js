@@ -51,6 +51,12 @@ function getHtmlFromChunk(chunk) {
 
   if (tagName) {
     const attrs = getAttributes({ tagName, ...chunk });
+
+    const isSelfClosing = helpers.selfClosingTags.includes(tagName);
+    if (isSelfClosing) {
+      return `<${tagName}${attrs}/>`;
+    }
+
     return `<${tagName}${attrs}>${content}</${tagName}>`;
   }
 

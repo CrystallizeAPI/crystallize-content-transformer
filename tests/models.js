@@ -191,6 +191,20 @@ validModels.complex = {
     '<div><p><em>Hello you</em></p><a href="#" target="_blank">How are you </a><em>doing?</em><ol><li>List item 1</li><li>List item 2</li></ol></div><p>Second item</p>'
 };
 
+validModels.withEmptyParagraph = {
+  ccc: {
+    kind: 'block',
+    type: 'paragraph',
+    children: [
+      {
+        kind: 'block',
+        type: 'line-break'
+      }
+    ]
+  },
+  html: '<p><br/></p>'
+};
+
 // Has fields, but it is empty
 invalidModels.basic = {
   ccc: {}
