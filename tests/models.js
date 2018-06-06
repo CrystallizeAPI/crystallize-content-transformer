@@ -10,7 +10,7 @@ validModels.nullElement = {
 validModels.singleElement = {
   ccc: {
     kind: 'block',
-    type: null,
+    type: 'container',
     textContent: 'Hello'
   }
 };
@@ -20,7 +20,7 @@ validModels.arrayAsRoot = {
   ccc: [
     {
       kind: 'block',
-      type: null,
+      type: 'container',
       textContent: 'Hello'
     }
   ]
@@ -66,7 +66,7 @@ validModels.singleElementQuote = {
 validModels.singleElementSharedMetadata = {
   ccc: {
     kind: 'block',
-    type: null,
+    type: 'container',
     textContent: 'Hello',
     metadata: {
       id: 'my-id'
@@ -108,7 +108,7 @@ validModels.withEmptyTextChilds = {
     children: [
       {
         kind: 'inline',
-        type: null,
+        type: 'container',
         textContent: 'Hello '
       },
       {
@@ -128,7 +128,7 @@ validModels.withEmptyTextChilds = {
       }
     ]
   },
-  html: '<p>Hello <em>you</em> <em>dog</em></p>'
+  html: '<p><span>Hello </span><em>you</em> <em>dog</em></p>'
 };
 
 /* A complex chunk */
@@ -136,7 +136,7 @@ validModels.complex = {
   ccc: [
     {
       kind: 'block',
-      type: null,
+      type: 'container',
       children: [
         {
           kind: 'block',
@@ -225,7 +225,7 @@ invalidModels.rootArrayHasMixedTypes = {
   ccc: [
     {
       kind: 'block',
-      type: null,
+      type: 'container',
       textContent: ''
     },
     123
@@ -236,7 +236,7 @@ invalidModels.rootArrayHasMixedTypes = {
 invalidModels.nodeHasInvalidType = {
   ccc: {
     kind: 'bullshit kind',
-    type: null,
+    type: 'container',
     textContent: ''
   }
 };
@@ -254,7 +254,7 @@ invalidModels.nodeHasInvalidType = {
 invalidModels.nodeChildrenIsInvalid = {
   ccc: {
     kind: 'block',
-    type: null,
+    type: 'container',
     children: 123
   }
 };

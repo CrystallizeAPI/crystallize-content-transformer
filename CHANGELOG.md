@@ -1,3 +1,16 @@
+## <small>0.6.1 (2018-06-01)</small>
+
+* Bugfix. Expose schema at root level ([e8d5370](https://github.com/snowballdigital/crystallize-content-chunk/commit/e8d5370))
+
+
+
+## 0.6.0 (2018-06-01)
+
+* Added test for inline null with empty content ([ad48671](https://github.com/snowballdigital/crystallize-content-chunk/commit/ad48671))
+* Exposed schema. Added container to type ([30f5ad2](https://github.com/snowballdigital/crystallize-content-chunk/commit/30f5ad2))
+
+
+
 <a name="0.5.5"></a>
 ## <small>0.5.5 (2018-05-30)</small>
 

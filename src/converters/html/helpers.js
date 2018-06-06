@@ -1,4 +1,32 @@
+const containers = {
+  div: {
+    kind: 'block',
+    type: 'container'
+  },
+  main: {
+    kind: 'block',
+    type: 'container'
+  },
+  span: {
+    kind: 'inline',
+    type: 'container'
+  }
+};
+
+const emphasizeds = {
+  em: {
+    kind: 'inline',
+    type: 'emphasized'
+  },
+  b: {
+    kind: 'inline',
+    type: 'emphasized'
+  }
+};
+
 const HTMLElementToTypeMap = {
+  ...containers,
+  ...emphasizeds,
   a: {
     kind: 'inline',
     type: 'link'
@@ -51,18 +79,6 @@ const HTMLElementToTypeMap = {
     kind: 'block',
     type: 'details'
   },
-  div: {
-    kind: 'block',
-    type: null
-  },
-  em: {
-    kind: 'inline',
-    type: 'emphasized'
-  },
-  b: {
-    kind: 'inline',
-    type: 'emphasized'
-  },
   figcaption: {
     kind: 'block',
     type: 'figcaption'
@@ -111,10 +127,6 @@ const HTMLElementToTypeMap = {
     kind: 'block',
     type: 'list-item'
   },
-  main: {
-    kind: 'block',
-    type: null
-  },
   mark: {
     kind: 'inline',
     type: 'highlight'
@@ -134,10 +146,6 @@ const HTMLElementToTypeMap = {
   section: {
     kind: 'block',
     type: 'section'
-  },
-  span: {
-    kind: 'inline',
-    type: null
   },
   strong: {
     kind: 'inline',

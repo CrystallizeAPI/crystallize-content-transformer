@@ -2,7 +2,7 @@ const validator = require('is-my-json-valid');
 
 const schema = {
   title: 'Crystallize Content Chunk model',
-  version: '0.5.2',
+  version: '0.6.0',
 
   definitions: {
     chunk: {
@@ -26,6 +26,7 @@ const schema = {
             'article',
             'aside',
             'code',
+            'container',
             'deleted',
             'details',
             'emphasized',
@@ -103,4 +104,4 @@ const isModelValidVerbose = validator(schema, {
   verbose: true
 });
 
-module.exports = { isModelValid, isModelValidVerbose };
+module.exports = { schema, isModelValid, isModelValidVerbose };
