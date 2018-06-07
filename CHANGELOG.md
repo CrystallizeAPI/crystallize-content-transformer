@@ -1,3 +1,10 @@
+<a name="0.6.4"></a>
+## <small>0.6.4 (2018-06-07)</small>
+
+* Handle meta tag in fromHTML ([5591386](https://github.com/snowballdigital/crystallize-content-chunk/commit/5591386))
+
+
+
 <a name="0.6.3"></a>
 ## <small>0.6.3 (2018-06-06)</small>
 
