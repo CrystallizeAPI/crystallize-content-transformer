@@ -19,4 +19,36 @@ describe(`fromHTML special cases`, () => {
       textContent: ' he llo '
     });
   });
+
+  it(`"Whitelisting works`, () => {
+    const html = `<p>1</p><b>2</b>`;
+    expect(fromHTML(html, { whitelistTags: ['b'] })).toEqual([
+      {
+        kind: 'block',
+        type: 'container',
+        textContent: '1'
+      },
+      {
+        kind: 'inline',
+        type: 'emphasized',
+        textContent: '2'
+      }
+    ]);
+  });
+
+  it(`"Blacklisting works`, () => {
+    const html = `<p>1</p><b>2</b>`;
+    expect(fromHTML(html, { blacklistTags: ['b'] })).toEqual([
+      {
+        kind: 'block',
+        type: 'paragraph',
+        textContent: '1'
+      },
+      {
+        kind: 'inline',
+        type: 'container',
+        textContent: '2'
+      }
+    ]);
+  });
 });

@@ -1,18 +1,7 @@
 const parse5 = require('parse5');
+const ow = require('ow');
 
 const helpers = require('./helpers');
-
-function getChunkDefinition({ tagName }) {
-  const definition = helpers.HTMLElementToTypeMap[tagName];
-  if (definition) {
-    return definition;
-  }
-
-  return {
-    kind: 'inline',
-    type: null
-  };
-}
 
 function getTextContent(node) {
   function parseText(text = '') {
@@ -94,34 +83,68 @@ function chunkHasContent(chunk) {
   return false;
 }
 
-function parseChunk(node) {
-  const chunkDefinition = getChunkDefinition(node);
+function fromHTML(html, opt) {
+  const options = opt || {};
 
-  const chunk = {};
-  Object.assign(chunk, chunkDefinition);
+  ow(html, ow.string);
+  ow(options.whitelistTags, ow.any(ow.nullOrUndefined, ow.array));
+  ow(options.blacklistTags, ow.any(ow.nullOrUndefined, ow.array));
 
-  const metadata = getMetadataFromNode(node);
-  if (metadata) {
-    if (!chunk.metadata) {
-      chunk.metadata = {};
+  function getChunkDefinition({ tagName }) {
+    const definition = helpers.HTMLElementToTypeMap[tagName];
+    if (definition) {
+      if (options.blacklistTags) {
+        if (options.blacklistTags.includes(tagName)) {
+          return {
+            ...definition,
+            type: 'container'
+          };
+        }
+      } else if (options.whitelistTags) {
+        if (!options.whitelistTags.includes(tagName)) {
+          return {
+            ...definition,
+            type: 'container'
+          };
+        }
+      }
+
+      return definition;
     }
-    Object.assign(chunk.metadata, metadata);
+
+    return {
+      kind: 'inline',
+      type: null
+    };
   }
 
-  const textContent = getTextContent(node);
-  if (textContent) {
-    chunk.textContent = textContent;
-  } else if (node.childNodes && node.childNodes.length > 0) {
-    chunk.children = Array.from(node.childNodes)
-      .filter(nodeHasContent)
-      .map(parseChunk)
-      .filter(chunkHasContent);
+  function parseChunk(node) {
+    const chunkDefinition = getChunkDefinition(node);
+
+    const chunk = {};
+    Object.assign(chunk, chunkDefinition);
+
+    const metadata = getMetadataFromNode(node);
+    if (metadata) {
+      if (!chunk.metadata) {
+        chunk.metadata = {};
+      }
+      Object.assign(chunk.metadata, metadata);
+    }
+
+    const textContent = getTextContent(node);
+    if (textContent) {
+      chunk.textContent = textContent;
+    } else if (node.childNodes && node.childNodes.length > 0) {
+      chunk.children = Array.from(node.childNodes)
+        .filter(nodeHasContent)
+        .map(parseChunk)
+        .filter(chunkHasContent);
+    }
+
+    return chunk;
   }
 
-  return chunk;
-}
-
-function fromHTML(html) {
   if (!html) {
     return null;
   }
