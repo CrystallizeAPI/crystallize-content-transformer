@@ -1,3 +1,10 @@
+<a name="0.7.0"></a>
+## 0.7.0 (2018-06-07)
+
+* Added white and blacklisting in fromHTML ([13eb0f4](https://github.com/snowballdigital/crystallize-content-chunk/commit/13eb0f4))
+
+
+
 <a name="0.6.4"></a>
 ## <small>0.6.4 (2018-06-07)</small>
 
