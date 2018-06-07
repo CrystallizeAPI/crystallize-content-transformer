@@ -15,19 +15,25 @@ function getChunkDefinition({ tagName }) {
 }
 
 function getTextContent(node) {
-  function stripLineBreaks(text = '') {
-    return text.replace(/\r?\n|\r/g, '');
+  function parseText(text = '') {
+    // If line breaks are present, remove all line breaks and whitespace
+    if (text.match(/\r?\n|\r/g)) {
+      return text.replace(/\r?\n|\r|\s/g, '');
+    }
+
+    // Replace double white space with a single
+    return text.replace(/\s{2,}/g, ' ');
   }
 
   if (node.nodeName === '#text') {
-    return stripLineBreaks(node.value);
+    return parseText(node.value);
   }
 
   return (
     node.childNodes &&
     node.childNodes.length === 1 &&
     node.childNodes[0].nodeName === '#text' &&
-    stripLineBreaks(node.childNodes[0].value)
+    parseText(node.childNodes[0].value)
   );
 }
 
