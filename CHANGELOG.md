@@ -1,3 +1,10 @@
+<a name="0.7.1"></a>
+## <small>0.7.1 (2018-06-12)</small>
+
+* Fixed too greedy whitespace stripping ([db1bcb0](https://github.com/snowballdigital/crystallize-content-chunk/commit/db1bcb0))
+
+
+
 <a name="0.7.0"></a>
 ## 0.7.0 (2018-06-07)
 
