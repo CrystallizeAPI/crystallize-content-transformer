@@ -5,13 +5,15 @@ const helpers = require('./helpers');
 
 function getTextContent(node) {
   function parseText(text = '') {
-    // If line breaks are present, remove all line breaks and whitespace
+    let t = text;
+
+    // If line breaks are present, remove all line breaks and first and last whitespace
     if (text.match(/\r?\n|\r/g)) {
-      return text.replace(/\r?\n|\r|\s/g, '');
+      t = text.replace(/\r?\n|\r/g, '').trim();
     }
 
     // Replace double white space with a single
-    return text.replace(/\s{2,}/g, ' ');
+    return t.replace(/\s{2,}/g, ' ');
   }
 
   if (node.nodeName === '#text') {

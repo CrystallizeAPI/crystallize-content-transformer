@@ -1,5 +1,9 @@
 const { fromHTML, toHTML } = require('./src');
 
-const html = `<p>hei</p>`;
-
-console.log(toHTML(fromHTML(html, { whitelistTags: ['p'] })));
+const html = `
+    <p><br>
+    Gjennom åhandlehososs
+    </p>
+    `;
+debugger;
+console.log(toHTML(fromHTML(html)));
