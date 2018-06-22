@@ -1,3 +1,10 @@
+<a name="0.7.2"></a>
+## <small>0.7.2 (2018-06-22)</small>
+
+* Fix bug with empty node in text converter ([8bbb60d](https://github.com/snowballdigital/crystallize-content-chunk/commit/8bbb60d))
+
+
+
 <a name="0.7.1"></a>
 ## <small>0.7.1 (2018-06-12)</small>
 
