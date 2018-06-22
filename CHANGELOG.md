@@ -1,3 +1,10 @@
+<a name="0.8.0"></a>
+## 0.8.0 (2018-06-22)
+
+* Added support for pre tags in HTML ([e3d7195](https://github.com/snowballdigital/crystallize-content-chunk/commit/e3d7195))
+
+
+
 <a name="0.7.2"></a>
 ## <small>0.7.2 (2018-06-22)</small>
 
