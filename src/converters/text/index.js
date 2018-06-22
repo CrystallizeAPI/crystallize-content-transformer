@@ -3,6 +3,10 @@ const isarray = require('isarray');
 
 function toText(model) {
   function getTextFromNode(node) {
+    if (!node) {
+      return '';
+    }
+
     if (node.children) {
       node.childrenText = node.children.reduce(
         (acc, n) => acc + getTextFromNode(n),
