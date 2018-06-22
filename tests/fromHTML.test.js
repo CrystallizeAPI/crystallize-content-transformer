@@ -20,6 +20,21 @@ describe(`fromHTML special cases`, () => {
     });
   });
 
+  it(`Keeps pre and code tags`, () => {
+    const html = `<pre><code>var x = 0;</code></pre>`;
+    expect(fromHTML(html)).toEqual({
+      kind: 'block',
+      type: 'preformatted',
+      children: [
+        {
+          kind: 'block',
+          type: 'code',
+          textContent: 'var x = 0;'
+        }
+      ]
+    });
+  });
+
   it("Should keep spaces in an inline 'null' element", () => {
     const html = `
     <p><br>

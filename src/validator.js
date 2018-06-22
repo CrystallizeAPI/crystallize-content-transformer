@@ -49,6 +49,7 @@ const schema = {
             'list-item',
             'paragraph',
             'picture',
+            'preformatted',
             'quote',
             'section',
             'subscripted',

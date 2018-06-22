@@ -139,6 +139,10 @@ const HTMLElementToTypeMap = {
     kind: 'block',
     type: 'paragraph'
   },
+  pre: {
+    kind: 'block',
+    type: 'preformatted'
+  },
   picture: {
     kind: 'block',
     type: 'picture'
