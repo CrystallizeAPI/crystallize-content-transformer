@@ -33,6 +33,15 @@ function getAttributes({ tagName, metadata }) {
   return ` ${attributes.join(' ')}`;
 }
 
+function parseTextContent(unsafeString) {
+  return unsafeString
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function getHtmlFromChunk(chunk) {
   const tagName = getTagFromChunk(chunk);
 
@@ -44,7 +53,12 @@ function getHtmlFromChunk(chunk) {
     );
   }
 
-  const content = chunk.textContent || childrenHtml || '';
+  let content = '';
+  if (chunk.textContent) {
+    content = parseTextContent(chunk.textContent);
+  } else if (childrenHtml) {
+    content = childrenHtml;
+  }
 
   if (tagName) {
     const attrs = getAttributes({ tagName, ...chunk });
