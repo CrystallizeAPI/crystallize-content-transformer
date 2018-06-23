@@ -1,3 +1,9 @@
+## <small>0.8.1 (2018-06-23)</small>
+
+* Bugfix: escape HTML entities when doing toHTML ([e6673d1](https://github.com/snowballdigital/crystallize-content-chunk/commit/e6673d1))
+
+
+
 <a name="0.8.0"></a>
 ## 0.8.0 (2018-06-22)
 
