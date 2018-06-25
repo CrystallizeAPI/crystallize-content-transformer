@@ -1,3 +1,10 @@
+<a name="0.8.3"></a>
+## <small>0.8.3 (2018-06-25)</small>
+
+* Commented out 'ow' since it caused issues with iOS Safari 10 ([9891aaa](https://github.com/snowballdigital/crystallize-content-chunk/commit/9891aaa))
+
+
+
 <a name="0.8.2"></a>
 ## <small>0.8.2 (2018-06-25)</small>
 
