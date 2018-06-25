@@ -31,6 +31,7 @@
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-minify": "^0.4.3",
     "babel-register": "^6.26.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
@@ -57,7 +58,8 @@
   "browserslist": [
     "> 0.5%",
     "IE 10",
-    "iOS 10"
+    "iOS > 8",
+    "Safari > 8"
   ],
   "eslintConfig": {
     "extends": [

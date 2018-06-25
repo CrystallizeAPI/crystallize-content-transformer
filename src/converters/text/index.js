@@ -7,8 +7,9 @@ function toText(model) {
       return '';
     }
 
+    let childrenText = '';
     if (node.children) {
-      node.childrenText = node.children.reduce(
+      childrenText = node.children.reduce(
         (acc, n) => acc + getTextFromNode(n),
         ''
       );
@@ -16,7 +17,7 @@ function toText(model) {
 
     let content = '';
 
-    content += node.textContent || node.childrenText || '';
+    content += node.textContent || childrenText || '';
 
     if (node.kind === 'block') {
       content = `\n${content}\n`;

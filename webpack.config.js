@@ -15,7 +15,17 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [['env', { modules: false }], 'stage-2']
+            presets: [
+              [
+                'env',
+                {
+                  targets: {
+                    browsers: ['> 0.5%', 'IE 8', 'iOS > 8', 'Safari > 8']
+                  }
+                }
+              ]
+            ],
+            plugins: ['transform-object-rest-spread']
           }
         }
       }

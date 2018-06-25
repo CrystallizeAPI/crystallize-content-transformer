@@ -1,5 +1,5 @@
 const parse5 = require('parse5');
-const ow = require('ow');
+// const ow = require('ow');
 
 const helpers = require('./helpers');
 
@@ -88,9 +88,9 @@ function chunkHasContent(chunk) {
 function fromHTML(html, opt) {
   const options = opt || {};
 
-  ow(html, ow.string);
-  ow(options.whitelistTags, ow.any(ow.nullOrUndefined, ow.array));
-  ow(options.blacklistTags, ow.any(ow.nullOrUndefined, ow.array));
+  // ow(html, ow.string);
+  // ow(options.whitelistTags, ow.any(ow.nullOrUndefined, ow.array));
+  // ow(options.blacklistTags, ow.any(ow.nullOrUndefined, ow.array));
 
   function getChunkDefinition({ tagName }) {
     const definition = helpers.HTMLElementToTypeMap[tagName];
