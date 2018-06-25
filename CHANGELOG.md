@@ -1,3 +1,10 @@
+<a name="0.8.2"></a>
+## <small>0.8.2 (2018-06-25)</small>
+
+* Transpilation for build ([607a5e0](https://github.com/snowballdigital/crystallize-content-chunk/commit/607a5e0))
+
+
+
 ## <small>0.8.1 (2018-06-23)</small>
 
 * Bugfix: escape HTML entities when doing toHTML ([e6673d1](https://github.com/snowballdigital/crystallize-content-chunk/commit/e6673d1))
