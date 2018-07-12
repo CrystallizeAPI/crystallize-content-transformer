@@ -1,3 +1,10 @@
+<a name="0.9.0"></a>
+## 0.9.0 (2018-07-12)
+
+* Disregard line breaks when doing fromHTML ([c83fac5](https://github.com/snowballdigital/crystallize-content-chunk/commit/c83fac5))
+
+
+
 <a name="0.8.4"></a>
 ## <small>0.8.4 (2018-07-12)</small>
 
