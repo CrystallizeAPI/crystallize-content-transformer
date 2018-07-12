@@ -7,13 +7,20 @@ function getTextContent(node) {
   function parseText(text = '') {
     let t = text;
 
-    // If line breaks are present, remove all line breaks and first and last whitespace
-    if (text.match(/\r?\n|\r/g)) {
-      t = text.replace(/\r?\n|\r/g, '').trim();
+    if (node.parentNode.nodeName !== 'code') {
+      // If line breaks are present, remove all line breaks and first and last whitespace
+      if (text.match(/\r?\n|\r/g)) {
+        t = text.replace(/\r?\n|\r/g, '').trim();
+      }
+
+      // Replace double white space with a single
+      t = t.replace(/\s{2,}/g, ' ');
+    } else {
+      // Normalize whitespace
+      t = t.replace(/\s/g, ' ');
     }
 
-    // Replace double white space with a single
-    return t.replace(/\s{2,}/g, ' ');
+    return t;
   }
 
   if (node.nodeName === '#text') {

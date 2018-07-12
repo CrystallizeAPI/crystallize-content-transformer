@@ -35,6 +35,45 @@ describe(`fromHTML special cases`, () => {
     });
   });
 
+  it('Should keep spaces in a code block', () => {
+    const html = `<pre><code>&lt;div&gt;<br>&nbsp;&nbsp;indented<br>&lt;/div&gt;</code></pre>`;
+    expect(fromHTML(html)).toEqual({
+      kind: 'block',
+      type: 'preformatted',
+      children: [
+        {
+          kind: 'block',
+          type: 'code',
+          children: [
+            {
+              kind: 'inline',
+              type: null,
+              textContent: '<div>'
+            },
+            {
+              kind: 'block',
+              type: 'line-break'
+            },
+            {
+              kind: 'inline',
+              type: null,
+              textContent: '  indented'
+            },
+            {
+              kind: 'block',
+              type: 'line-break'
+            },
+            {
+              kind: 'inline',
+              type: null,
+              textContent: '</div>'
+            }
+          ]
+        }
+      ]
+    });
+  });
+
   it("Should keep spaces in an inline 'null' element", () => {
     const html = `
     <p><br>
