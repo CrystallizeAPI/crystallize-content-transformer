@@ -1,3 +1,10 @@
+<a name="0.8.4"></a>
+## <small>0.8.4 (2018-07-12)</small>
+
+* Keep spacing in code blocks ([324f978](https://github.com/snowballdigital/crystallize-content-chunk/commit/324f978))
+
+
+
 <a name="0.8.3"></a>
 ## <small>0.8.3 (2018-06-25)</small>
 
