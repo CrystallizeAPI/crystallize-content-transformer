@@ -6,7 +6,6 @@ const helpers = require('./helpers');
 function getTextContent(node) {
   function parseText(text = '') {
     let t = text;
-
     if (node.parentNode.nodeName !== 'code') {
       // If line breaks are present, remove all line breaks and first and last whitespace
       if (text.match(/\r?\n|\r/g)) {
@@ -18,6 +17,9 @@ function getTextContent(node) {
     } else {
       // Normalize whitespace
       t = t.replace(/\s/g, ' ');
+
+      // Remove line breaks
+      t = text.replace(/\r?\n|\r/g, '');
     }
 
     return t;

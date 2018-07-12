@@ -36,7 +36,7 @@ describe(`fromHTML special cases`, () => {
   });
 
   it('Should keep spaces in a code block', () => {
-    const html = `<pre><code>&lt;div&gt;<br>&nbsp;&nbsp;indented<br>&lt;/div&gt;</code></pre>`;
+    const html = `<pre><code>&lt;div&gt;<br>  indented<br>&lt;/div&gt;</code></pre>`;
     expect(fromHTML(html)).toEqual({
       kind: 'block',
       type: 'preformatted',
