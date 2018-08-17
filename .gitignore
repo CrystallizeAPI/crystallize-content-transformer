@@ -62,7 +62,6 @@ typings/
 
 # Dist
 dist
-toHTML.js
 
 # OSX finder
 .DS_STORE
