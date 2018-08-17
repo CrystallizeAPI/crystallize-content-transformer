@@ -1,3 +1,9 @@
+## <small>0.10.1 (2018-08-17)</small>
+
+* Add toHTML export to git ([b9fba91](https://github.com/snowballdigital/crystallize-content-chunk/commit/b9fba91))
+
+
+
 ## 0.10.0 (2018-08-17)
 
 * Enable toHTML to be required independently ([8f17e97](https://github.com/snowballdigital/crystallize-content-chunk/commit/8f17e97))
