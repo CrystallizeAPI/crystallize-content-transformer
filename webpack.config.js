@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   entry: {
     index: './src/index.js',
-    toHTML: './src/converters/html/fromHTML.js'
+    toHTML: './src/converters/html/toHTML.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
