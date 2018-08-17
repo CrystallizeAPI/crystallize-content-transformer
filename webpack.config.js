@@ -1,10 +1,13 @@
 const path = require('path');
 
 module.exports = {
-  entry: ['./src/index.js'],
+  entry: {
+    index: './src/index.js',
+    toHTML: './src/converters/html/fromHTML.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js',
+    filename: '[name].js',
     libraryTarget: 'commonjs2'
   },
   module: {

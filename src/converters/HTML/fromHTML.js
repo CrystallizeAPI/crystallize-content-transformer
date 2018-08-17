@@ -3,20 +3,28 @@ const parse5 = require('parse5');
 
 const helpers = require('./helpers');
 
-function getTextContent(node) {
+function getTextContent(node, opt = {}) {
   function parseText(text = '') {
     let t = text;
     if (node.parentNode.nodeName !== 'code') {
       // If line breaks are present, remove all line breaks and first and last whitespace
       if (text.match(/\r?\n|\r/g)) {
-        t = text.replace(/\r?\n|\r/g, '').trim();
+        t = text.replace(/\r?\n|\r/g, '');
+
+        if (!opt.keepSpaces) {
+          t = t.trim();
+        }
       }
 
       // Replace double white space with a single
-      t = t.replace(/\s{2,}/g, ' ');
+      if (!opt.keepSpaces) {
+        t = t.replace(/\s{2,}/g, ' ');
+      }
     } else {
       // Normalize whitespace
-      t = t.replace(/\s/g, ' ');
+      if (!opt.keepSpaces) {
+        t = t.replace(/\s/g, ' ');
+      }
 
       // Remove line breaks
       t = text.replace(/\r?\n|\r/g, '');
@@ -143,7 +151,7 @@ function fromHTML(html, opt) {
       Object.assign(chunk.metadata, metadata);
     }
 
-    const textContent = getTextContent(node);
+    const textContent = getTextContent(node, opt);
     if (textContent) {
       chunk.textContent = textContent;
     } else if (node.childNodes && node.childNodes.length > 0) {
