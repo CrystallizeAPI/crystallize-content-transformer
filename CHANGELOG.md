@@ -1,3 +1,9 @@
+## 0.10.0 (2018-08-17)
+
+* Enable toHTML to be required independently ([8f17e97](https://github.com/snowballdigital/crystallize-content-chunk/commit/8f17e97))
+
+
+
 <a name="0.9.0"></a>
 ## 0.9.0 (2018-07-12)
 
