@@ -1,3 +1,9 @@
+## <small>0.10.3 (2018-08-17)</small>
+
+* Added toHTML build ([a726e64](https://github.com/snowballdigital/crystallize-content-chunk/commit/a726e64))
+
+
+
 ## <small>0.10.2 (2018-08-17)</small>
 
 * Fixed wrong output to toHTML ([d227e0a](https://github.com/snowballdigital/crystallize-content-chunk/commit/d227e0a))
