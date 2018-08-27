@@ -1,3 +1,9 @@
+## 0.11.0 (2018-08-27)
+
+* Exclude meta and style tags in fromHTML ([ff7878e](https://github.com/snowballdigital/crystallize-content-chunk/commit/ff7878e))
+
+
+
 ## <small>0.10.3 (2018-08-17)</small>
 
 * Added toHTML build ([a726e64](https://github.com/snowballdigital/crystallize-content-chunk/commit/a726e64))
