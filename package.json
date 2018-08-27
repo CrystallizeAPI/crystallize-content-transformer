@@ -10,12 +10,14 @@
     "test:watch": "jest --watch",
     "prepare": "npm run validate && npm run build",
     "dev": "nodemon ./develop",
+    "dev:inspect": "nodemon --inspect-brk ./develop",
     "validate": "npm run lint && npm run test",
     "prepush": "npm run validate"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snowballdigital/crystallize-content-chunk.git"
+    "url":
+      "git+https://github.com/snowballdigital/crystallize-content-chunk.git"
   },
   "keywords": [],
   "author": "",
@@ -23,7 +25,8 @@
   "bugs": {
     "url": "https://github.com/snowballdigital/crystallize-content-chunk/issues"
   },
-  "homepage": "https://github.com/snowballdigital/crystallize-content-chunk#readme",
+  "homepage":
+    "https://github.com/snowballdigital/crystallize-content-chunk#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -55,20 +58,10 @@
     "ow": "^0.4.0",
     "parse5": "^5.0.0"
   },
-  "browserslist": [
-    "> 0.5%",
-    "IE 10",
-    "iOS > 8",
-    "Safari > 8"
-  ],
+  "browserslist": ["> 0.5%", "IE 10", "iOS > 8", "Safari > 8"],
   "eslintConfig": {
-    "extends": [
-      "airbnb",
-      "prettier"
-    ],
-    "plugins": [
-      "prettier"
-    ],
+    "extends": ["airbnb", "prettier"],
+    "plugins": ["prettier"],
     "parser": "babel-eslint",
     "settings": {
       "import/resolver": {

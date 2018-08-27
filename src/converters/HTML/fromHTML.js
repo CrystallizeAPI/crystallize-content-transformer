@@ -111,6 +111,7 @@ function fromHTML(html, opt) {
 
   function getChunkDefinition({ tagName }) {
     const definition = helpers.HTMLElementToTypeMap[tagName];
+
     if (definition) {
       if (options.blacklistTags) {
         if (options.blacklistTags.includes(tagName)) {
@@ -127,14 +128,14 @@ function fromHTML(html, opt) {
           };
         }
       }
-
-      return definition;
     }
 
-    return {
-      kind: 'inline',
-      type: null
-    };
+    return (
+      definition || {
+        kind: 'inline',
+        type: null
+      }
+    );
   }
 
   function parseChunk(node) {
@@ -142,6 +143,10 @@ function fromHTML(html, opt) {
 
     const chunk = {};
     Object.assign(chunk, chunkDefinition);
+
+    if (['meta', 'style'].includes(node.nodeName)) {
+      return null;
+    }
 
     const metadata = getMetadataFromNode(node);
     if (metadata) {
