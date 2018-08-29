@@ -1,3 +1,9 @@
+## 1.0.0 (2018-08-29)
+
+* New mapping for emphasized and strong chunks ([2766c56](https://github.com/snowballdigital/crystallize-content-chunk/commit/2766c56))
+
+
+
 ## 0.12.0 (2018-08-29)
 
 * React content chunk factory ([3441075](https://github.com/snowballdigital/crystallize-content-chunk/commit/3441075))
