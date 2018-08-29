@@ -65,3 +65,6 @@ dist
 
 # OSX finder
 .DS_STORE
+
+# Other
+.cache

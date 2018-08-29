@@ -51,7 +51,7 @@ describe(`fromHTML special cases`, () => {
               textContent: '<div>'
             },
             {
-              kind: 'block',
+              kind: 'inline',
               type: 'line-break'
             },
             {
@@ -60,7 +60,7 @@ describe(`fromHTML special cases`, () => {
               textContent: '  indented'
             },
             {
-              kind: 'block',
+              kind: 'inline',
               type: 'line-break'
             },
             {
@@ -86,7 +86,7 @@ describe(`fromHTML special cases`, () => {
         type: 'paragraph',
         children: [
           {
-            kind: 'block',
+            kind: 'inline',
             type: 'line-break'
           },
           {

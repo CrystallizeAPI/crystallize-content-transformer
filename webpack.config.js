@@ -3,12 +3,14 @@ const path = require('path');
 module.exports = {
   entry: {
     index: './src/index.js',
-    toHTML: './src/converters/html/toHTML.js'
+    toHTML: './src/converters/html/toHTML.js',
+    reactChunkFactory: './src/react-chunk-factory.jsx'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'umd',
+    globalObject: 'this'
   },
   module: {
     rules: [
@@ -31,7 +33,24 @@ module.exports = {
             plugins: ['transform-object-rest-spread']
           }
         }
+      },
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [['env', { modules: false }], 'react']
+          }
+        }
       }
     ]
+  },
+  externals: {
+    react: {
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'react'
+    }
   }
 };

@@ -56,7 +56,7 @@ const HTMLElementToTypeMap = {
     type: 'quote'
   },
   br: {
-    kind: 'block',
+    kind: 'inline',
     type: 'line-break'
   },
   caption: {

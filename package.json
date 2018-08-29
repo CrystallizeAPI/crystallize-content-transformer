@@ -5,18 +5,21 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint src",
-    "build": "webpack --mode=development && mv ./dist/toHTML.js ./",
+    "build":
+      "webpack --mode=development && mv ./dist/toHTML.js ./ && mv ./dist/reactChunkFactory.js ./",
     "test": "jest",
     "test:watch": "jest --watch",
     "prepare": "npm run validate && npm run build",
     "dev": "nodemon ./develop",
     "dev:inspect": "nodemon --inspect-brk ./develop",
+    "dev:react": "NODE_ENV=development parcel ./public/index.html",
     "validate": "npm run lint && npm run test",
     "prepush": "npm run validate"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snowballdigital/crystallize-content-chunk.git"
+    "url":
+      "git+https://github.com/snowballdigital/crystallize-content-chunk.git"
   },
   "keywords": [],
   "author": "",
@@ -24,15 +27,21 @@
   "bugs": {
     "url": "https://github.com/snowballdigital/crystallize-content-chunk/issues"
   },
-  "homepage": "https://github.com/snowballdigital/crystallize-content-chunk#readme",
+  "homepage":
+    "https://github.com/snowballdigital/crystallize-content-chunk#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.1.2",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-minify": "^0.4.3",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
@@ -45,7 +54,10 @@
     "husky": "^0.14.3",
     "jest": "^22.4.4",
     "nodemon": "^1.17.5",
+    "parcel-bundler": "^1.9.2",
     "prettier": "^1.12.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.4"
   },
@@ -56,20 +68,14 @@
     "ow": "^0.4.0",
     "parse5": "^5.0.0"
   },
-  "browserslist": [
-    "> 0.5%",
-    "IE 10",
-    "iOS > 8",
-    "Safari > 8"
-  ],
+  "peerDependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "browserslist": ["> 0.5%", "IE 10", "iOS > 8", "Safari > 8"],
   "eslintConfig": {
-    "extends": [
-      "airbnb",
-      "prettier"
-    ],
-    "plugins": [
-      "prettier"
-    ],
+    "extends": ["airbnb", "prettier"],
+    "plugins": ["prettier"],
     "parser": "babel-eslint",
     "settings": {
       "import/resolver": {

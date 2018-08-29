@@ -183,11 +183,11 @@ validModels.complex = {
     {
       kind: 'block',
       type: 'paragraph',
-      textContent: 'Second item'
+      textContent: 'A simple paragraph at the end'
     }
   ],
   html:
-    '<div><p><em>Hello you</em></p><a href="#" target="_blank">How are you </a><em>doing?</em><ol><li>List item 1</li><li>List item 2</li></ol></div><p>Second item</p>'
+    '<div><p><em>Hello you</em></p><a href="#" target="_blank">How are you </a><em>doing?</em><ol><li>List item 1</li><li>List item 2</li></ol></div><p>A simple paragraph at the end</p>'
 };
 
 validModels.withEmptyParagraph = {
@@ -196,7 +196,7 @@ validModels.withEmptyParagraph = {
     type: 'paragraph',
     children: [
       {
-        kind: 'block',
+        kind: 'inline',
         type: 'line-break'
       }
     ]
