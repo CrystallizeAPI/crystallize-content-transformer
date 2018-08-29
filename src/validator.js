@@ -1,8 +1,8 @@
 const validator = require('is-my-json-valid');
 
 const schema = {
-  title: 'Crystallize Content Chunk model',
-  version: '0.6.0',
+  title: 'Crystallize Content Chunk',
+  version: '1.0.0',
 
   definitions: {
     chunk: {
