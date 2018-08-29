@@ -1,3 +1,9 @@
+## <small>1.0.1 (2018-08-29)</small>
+
+* Fixed versioning of the schema ([5f968de](https://github.com/snowballdigital/crystallize-content-chunk/commit/5f968de))
+
+
+
 ## 1.0.0 (2018-08-29)
 
 * New mapping for emphasized and strong chunks ([2766c56](https://github.com/snowballdigital/crystallize-content-chunk/commit/2766c56))
