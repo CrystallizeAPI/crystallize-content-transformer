@@ -109,7 +109,7 @@ describe(`fromHTML special cases`, () => {
       },
       {
         kind: 'inline',
-        type: 'emphasized',
+        type: 'strong',
         textContent: '2'
       }
     ]);

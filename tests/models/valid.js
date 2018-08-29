@@ -159,7 +159,7 @@ validModels.complex = {
         },
         {
           kind: 'inline',
-          type: 'emphasized',
+          type: 'strong',
           textContent: 'doing?'
         },
         {
@@ -187,7 +187,7 @@ validModels.complex = {
     }
   ],
   html:
-    '<div><p><em>Hello you</em></p><a href="#" target="_blank">How are you </a><em>doing?</em><ol><li>List item 1</li><li>List item 2</li></ol></div><p>A simple paragraph at the end</p>'
+    '<div><p><em>Hello you</em></p><a href="#" target="_blank">How are you </a><strong>doing?</strong><ol><li>List item 1</li><li>List item 2</li></ol></div><p>A simple paragraph at the end</p>'
 };
 
 validModels.withEmptyParagraph = {

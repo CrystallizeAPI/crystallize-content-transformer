@@ -13,12 +13,23 @@ const containers = {
   }
 };
 
+const strongs = {
+  strong: {
+    kind: 'inline',
+    type: 'strong'
+  },
+  b: {
+    kind: 'inline',
+    type: 'strong'
+  }
+};
+
 const emphasizeds = {
   em: {
     kind: 'inline',
     type: 'emphasized'
   },
-  b: {
+  i: {
     kind: 'inline',
     type: 'emphasized'
   }
@@ -26,6 +37,7 @@ const emphasizeds = {
 
 const HTMLElementToTypeMap = {
   ...containers,
+  ...strongs,
   ...emphasizeds,
   a: {
     kind: 'inline',
@@ -115,10 +127,6 @@ const HTMLElementToTypeMap = {
     kind: 'block',
     type: 'horizontal-line'
   },
-  i: {
-    kind: 'inline',
-    type: 'italic'
-  },
   img: {
     kind: 'block',
     type: 'image'
@@ -153,7 +161,7 @@ const HTMLElementToTypeMap = {
   },
   strong: {
     kind: 'inline',
-    type: 'emphasized'
+    type: 'strong'
   },
   sub: {
     kind: 'inline',
