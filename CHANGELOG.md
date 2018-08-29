@@ -1,3 +1,9 @@
+## 0.12.0 (2018-08-29)
+
+* React content chunk factory ([3441075](https://github.com/snowballdigital/crystallize-content-chunk/commit/3441075))
+
+
+
 ## 0.11.0 (2018-08-27)
 
 * Exclude meta and style tags in fromHTML ([ff7878e](https://github.com/snowballdigital/crystallize-content-chunk/commit/ff7878e))
