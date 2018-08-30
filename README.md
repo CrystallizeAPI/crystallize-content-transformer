@@ -12,8 +12,6 @@ const Chunk = ChunkFactory({
 })
 
 <Chunk {...model}>
-or
-<Chunk children={modelArray}>
 ```
 
 ## toHTML

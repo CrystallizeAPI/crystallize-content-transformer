@@ -12,9 +12,6 @@ const Chunk = ChunkFactory({
   link: p => <a href={p.metadata.href}>{p.textContent}</a>
 });
 
-ReactDOM.render(
-  <div>
-    <Chunk children={validModels.complex.ccc} />
-  </div>,
-  document.getElementById('root')
-);
+const arr = [{ kind: 'block', type: null, textContent: 'heiASD' }];
+
+ReactDOM.render(<Chunk {...arr} />, document.getElementById('root'));

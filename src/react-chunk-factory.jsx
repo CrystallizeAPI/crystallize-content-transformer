@@ -1,6 +1,5 @@
 /* eslint no-use-before-define: 0, react/prop-types: 0 */
 import React from 'react';
-import isarray from 'isarray';
 
 export default function ChunkFactory(components = {}) {
   const cmps = Object.assign(
@@ -40,8 +39,17 @@ export default function ChunkFactory(components = {}) {
   }
 
   function Chunk(props) {
-    if (isarray(props)) {
-      return props.map(renderChunkChild);
+    const spreadedArray = '0' in props;
+
+    if (spreadedArray) {
+      const children = Object.keys(props).reduce((arr, key) => {
+        const index = parseInt(key, 10);
+        if (!Number.isNaN(index)) {
+          arr.push(props[key]);
+        }
+        return arr;
+      }, []);
+      return children.map(renderChunkChild);
     }
 
     let Component;
@@ -55,7 +63,7 @@ export default function ChunkFactory(components = {}) {
             Cmp = cmps.span;
           }
           Cmp = cmps.div;
-        } else if (type === null && kind === 'inline') {
+        } else if (type === null && props.textContent) {
           return props.textContent;
         }
       }
@@ -64,14 +72,6 @@ export default function ChunkFactory(components = {}) {
 
     if (Component) {
       return <Component {...props} />;
-    }
-
-    if (props.children) {
-      if (isarray(props.children)) {
-        return props.children.map(renderChunkChild);
-      }
-
-      return <Chunk {...props.children} />;
     }
 
     return null;
