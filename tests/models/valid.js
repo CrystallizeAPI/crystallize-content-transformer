@@ -204,6 +204,26 @@ validModels.withEmptyParagraph = {
   html: '<p><br/></p>'
 };
 
+validModels.withStrongTag = {
+  ccc: {
+    kind: 'block',
+    type: 'paragraph',
+    children: [
+      {
+        kind: 'inline',
+        type: 'strong',
+        textContent: 'sad'
+      },
+      {
+        kind: 'inline',
+        type: null,
+        textContent: 'asd'
+      }
+    ]
+  },
+  html: '<p><strong>sad</strong>asd</p>'
+};
+
 module.exports = {
   validModels
 };

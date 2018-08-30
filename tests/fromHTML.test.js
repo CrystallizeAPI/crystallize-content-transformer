@@ -1,4 +1,4 @@
-const { fromHTML } = require('../src');
+const { fromHTML, isModelValid } = require('../src');
 
 describe(`fromHTML special cases`, () => {
   it(`Meta tags should be stripped`, () => {
@@ -129,5 +129,26 @@ describe(`fromHTML special cases`, () => {
         textContent: '2'
       }
     ]);
+  });
+
+  it(`<strong> tags work`, () => {
+    expect(
+      isModelValid({
+        kind: 'block',
+        type: 'paragraph',
+        children: [
+          {
+            kind: 'inline',
+            type: 'strong',
+            textContent: 'sad'
+          },
+          {
+            kind: 'inline',
+            type: null,
+            textContent: 'asd'
+          }
+        ]
+      })
+    ).toBe(true);
   });
 });

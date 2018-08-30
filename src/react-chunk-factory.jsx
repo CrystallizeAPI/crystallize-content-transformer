@@ -7,8 +7,8 @@ export default function ChunkFactory(components = {}) {
     {
       div: p => <div>{render(p)}</div>,
       span: p => <span>{render(p)}</span>,
-      italic: p => <i>{render(p)}</i>,
-      emphasized: p => <strong>{render(p)}</strong>,
+      emphasized: p => <em>{render(p)}</em>,
+      strong: p => <strong>{render(p)}</strong>,
       code: p => <code>{render(p)}</code>,
       underline: p => <u>{render(p)}</u>,
       paragraph: p => <p>{render(p)}</p>,
@@ -49,6 +49,8 @@ export default function ChunkFactory(components = {}) {
             Cmp = cmps.span;
           }
           Cmp = cmps.div;
+        } else if (type === null && kind === 'inline') {
+          return props.textContent;
         }
       }
       Component = Cmp;
@@ -58,8 +60,12 @@ export default function ChunkFactory(components = {}) {
       return <Component {...props} />;
     }
 
-    if (isarray(props.children)) {
-      return props.children.map(renderChunkChild);
+    if (props.children) {
+      if (isarray(props.children)) {
+        return props.children.map(renderChunkChild);
+      }
+
+      return <Chunk {...props.children} />;
     }
 
     return null;
