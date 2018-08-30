@@ -1,3 +1,9 @@
+## <small>1.0.2 (2018-08-30)</small>
+
+* Bugfix for rendering empty textContent nodes ([cf588a3](https://github.com/snowballdigital/crystallize-content-chunk/commit/cf588a3))
+
+
+
 ## <small>1.0.1 (2018-08-29)</small>
 
 * Fixed versioning of the schema ([5f968de](https://github.com/snowballdigital/crystallize-content-chunk/commit/5f968de))
