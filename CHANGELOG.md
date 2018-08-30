@@ -1,3 +1,10 @@
+<a name="1.0.3"></a>
+## <small>1.0.3 (2018-08-30)</small>
+
+* added preformatted supported, fixed quote and blockquote determined on kind ([818ac1e](https://github.com/snowballdigital/crystallize-content-chunk/commit/818ac1e))
+
+
+
 ## <small>1.0.2 (2018-08-30)</small>
 
 * Bugfix for rendering empty textContent nodes ([cf588a3](https://github.com/snowballdigital/crystallize-content-chunk/commit/cf588a3))
