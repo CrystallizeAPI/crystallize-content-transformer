@@ -1,3 +1,10 @@
+<a name="2.0.0"></a>
+## 2.0.0 (2018-08-30)
+
+* removed children as prop ([8aa8830](https://github.com/snowballdigital/crystallize-content-chunk/commit/8aa8830))
+
+
+
 <a name="1.0.3"></a>
 ## <small>1.0.3 (2018-08-30)</small>
 
