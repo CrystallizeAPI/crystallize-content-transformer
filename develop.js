@@ -1,4 +1,4 @@
-const { fromHTML, toHTML } = require('./dist');
+const { fromHTML, toHTML } = require('./src');
 
 const html = `<b>hey</b><i>i</i>`;
 const model = fromHTML(html, {
