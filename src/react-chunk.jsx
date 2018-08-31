@@ -1,49 +1,51 @@
-/* eslint no-use-before-define: 0, react/prop-types: 0 */
+/* eslint no-use-before-define: 0, react/prop-types: 0, react/no-array-index-key: 0 */
 import React from 'react';
 
-export function ChunkFactory(components = {}) {
-  const cmps = Object.assign(
-    {
-      div: p => <div>{render(p)}</div>,
-      span: p => <span>{render(p)}</span>,
-      emphasized: p => <em>{render(p)}</em>,
-      strong: p => <strong>{render(p)}</strong>,
-      code: p => <code>{render(p)}</code>,
-      underline: p => <u>{render(p)}</u>,
-      paragraph: p => <p>{render(p)}</p>,
-      preformatted: p => <pre>{render(p)}</pre>,
-      'unordered-list': ({ children }) => <ul>{render({ children })}</ul>,
-      'ordered-list': ({ children }) => <ol>{render({ children })}</ol>,
-      list: ({ children }) => <ul>{render({ children })}</ul>,
-      'list-item': p => <li>{render(p)}</li>,
-      link: ({ metadata, ...rest }) => (
-        <a href={metadata.href}>{render(rest)}</a>
-      ),
-      'line-break': () => <br />,
-      quote: p => {
-        if (p.kind === 'block') {
-          return <blockquote>{render(p)}</blockquote>;
-        }
-        return <q>{render(p)}</q>;
+export default class Chunk extends React.Component {
+  defaultComponents = {
+    div: p => <div>{this.renderChunk(p)}</div>,
+    span: p => <span>{this.renderChunk(p)}</span>,
+    emphasized: p => <em>{this.renderChunk(p)}</em>,
+    strong: p => <strong>{this.renderChunk(p)}</strong>,
+    code: p => <code>{this.renderChunk(p)}</code>,
+    underline: p => <u>{this.renderChunk(p)}</u>,
+    paragraph: p => <p>{this.renderChunk(p)}</p>,
+    preformatted: p => <pre>{this.renderChunk(p)}</pre>,
+    'unordered-list': ({ children }) => (
+      <ul>{this.renderChunk({ children })}</ul>
+    ),
+    'ordered-list': ({ children }) => <ol>{this.renderChunk({ children })}</ol>,
+    list: ({ children }) => <ul>{this.renderChunk({ children })}</ul>,
+    'list-item': p => <li>{this.renderChunk(p)}</li>,
+    link: ({ metadata, ...rest }) => (
+      <a href={metadata.href}>{this.renderChunk(rest)}</a>
+    ),
+    'line-break': () => <br />,
+    quote: p => {
+      if (p.kind === 'block') {
+        return <blockquote>{this.renderChunk(p)}</blockquote>;
       }
-    },
-    components
+      return <q>{this.renderChunk(p)}</q>;
+    }
+  };
+
+  renderChunk = ({ children = [], textContent }) =>
+    textContent || children.map(this.renderChunkChild);
+
+  renderChunkChild = (c, i) => (
+    <Chunk key={i} {...c} overrides={this.overrides} />
   );
 
-  function render({ children = [], textContent }) {
-    return textContent || children.map(renderChunkChild);
-  }
+  render() {
+    const { overrides, ...props } = this.props;
 
-  function renderChunkChild(c, i) {
-    return <Chunk key={i} {...c} />;
-  }
-
-  function Chunk({ overrides, ...props }) {
-    const currentCmps = cmps;
+    const currentCmps = Object.assign({}, this.defaultComponents);
     if (overrides) {
+      this.overrides = overrides;
       Object.assign(currentCmps, overrides);
     }
 
+    // An array has been passed to props
     const spreadedArray = '0' in props;
     if (spreadedArray) {
       const children = Object.keys(props).reduce((arr, key) => {
@@ -53,9 +55,10 @@ export function ChunkFactory(components = {}) {
         }
         return arr;
       }, []);
-      return children.map(renderChunkChild);
+      return children.map(this.renderChunkChild);
     }
 
+    // A node has been passed to props
     let Component;
     if ('type' in props) {
       const { type, kind } = props;
@@ -80,8 +83,4 @@ export function ChunkFactory(components = {}) {
 
     return null;
   }
-
-  return Chunk;
 }
-
-export default ChunkFactory();
