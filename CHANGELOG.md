@@ -1,3 +1,9 @@
+## 3.0.0 (2018-08-31)
+
+* Changed React chunk exports and API ([8ccc6a5](https://github.com/snowballdigital/crystallize-content-chunk/commit/8ccc6a5))
+
+
+
 <a name="2.0.0"></a>
 ## 2.0.0 (2018-08-30)
 
