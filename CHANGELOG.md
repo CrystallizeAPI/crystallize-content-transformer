@@ -1,6 +1,13 @@
 ## <small>3.1.1 (2018-08-31)</small>
 
 * Fix bleed of overrides between Chunks ([009a6f0](https://github.com/snowballdigital/crystallize-content-chunk/commit/009a6f0))
+* Fix build ([1f0bd77](https://github.com/snowballdigital/crystallize-content-chunk/commit/1f0bd77))
+
+
+
+## <small>3.1.1 (2018-08-31)</small>
+
+* Fix bleed of overrides between Chunks ([009a6f0](https://github.com/snowballdigital/crystallize-content-chunk/commit/009a6f0))
 
 
 

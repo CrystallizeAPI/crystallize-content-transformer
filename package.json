@@ -5,8 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint src",
-    "build":
-      "webpack --mode=development && mv ./dist/toHTML.js ./ && mv ./dist/toText.js ./ && mv ./dist/reactChunk.js ./",
+    "build": "webpack --mode=development && mv ./dist/toHTML.js ./ && mv ./dist/toText.js ./ && mv ./dist/reactChunk.js ./",
     "test": "jest",
     "test:watch": "jest --watch",
     "prepare": "npm run validate && npm run build",
@@ -18,8 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url":
-      "git+https://github.com/snowballdigital/crystallize-content-chunk.git"
+    "url": "git+https://github.com/snowballdigital/crystallize-content-chunk.git"
   },
   "keywords": [],
   "author": "",
@@ -27,8 +25,7 @@
   "bugs": {
     "url": "https://github.com/snowballdigital/crystallize-content-chunk/issues"
   },
-  "homepage":
-    "https://github.com/snowballdigital/crystallize-content-chunk#readme",
+  "homepage": "https://github.com/snowballdigital/crystallize-content-chunk#readme",
   "devDependencies": {
     "@babel/preset-stage-2": "^7.0.0",
     "babel-cli": "^6.26.0",
@@ -73,10 +70,20 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
-  "browserslist": ["> 0.5%", "IE 10", "iOS > 8", "Safari > 8"],
+  "browserslist": [
+    "> 0.5%",
+    "IE 10",
+    "iOS > 8",
+    "Safari > 8"
+  ],
   "eslintConfig": {
-    "extends": ["airbnb", "prettier"],
-    "plugins": ["prettier"],
+    "extends": [
+      "airbnb",
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ],
     "parser": "babel-eslint",
     "settings": {
       "import/resolver": {
