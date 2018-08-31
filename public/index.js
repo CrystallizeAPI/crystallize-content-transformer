@@ -6,12 +6,19 @@ import './index.css';
 
 import { validModels } from '../tests/models';
 
-import ChunkFactory from '../src/react-chunk-factory';
+import Chunk from '../src/react-chunk';
 
-const Chunk = ChunkFactory({
-  link: p => <a href={p.metadata.href}>{p.textContent}</a>
-});
+const overrides = {
+  link: p => (
+    <h1>
+      <a href={p.metadata.href}>{p.textContent}</a>
+    </h1>
+  )
+};
 
 const arr = [{ kind: 'block', type: null, textContent: 'heiASD' }];
 
-ReactDOM.render(<Chunk {...arr} />, document.getElementById('root'));
+ReactDOM.render(
+  <Chunk {...validModels.complex.ccc} overrides={overrides} />,
+  document.getElementById('root')
+);

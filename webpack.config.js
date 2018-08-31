@@ -4,7 +4,7 @@ module.exports = {
   entry: {
     index: './src/index.js',
     toHTML: './src/converters/html/toHTML.js',
-    reactChunkFactory: './src/react-chunk-factory.jsx'
+    reactChunk: './src/react-chunk.jsx'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

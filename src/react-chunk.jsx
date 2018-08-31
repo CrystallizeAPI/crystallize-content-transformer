@@ -1,7 +1,7 @@
 /* eslint no-use-before-define: 0, react/prop-types: 0 */
 import React from 'react';
 
-export default function ChunkFactory(components = {}) {
+export function ChunkFactory(components = {}) {
   const cmps = Object.assign(
     {
       div: p => <div>{render(p)}</div>,
@@ -38,9 +38,13 @@ export default function ChunkFactory(components = {}) {
     return <Chunk key={i} {...c} />;
   }
 
-  function Chunk(props) {
-    const spreadedArray = '0' in props;
+  function Chunk({ overrides, ...props }) {
+    const currentCmps = cmps;
+    if (overrides) {
+      Object.assign(currentCmps, overrides);
+    }
 
+    const spreadedArray = '0' in props;
     if (spreadedArray) {
       const children = Object.keys(props).reduce((arr, key) => {
         const index = parseInt(key, 10);
@@ -55,14 +59,14 @@ export default function ChunkFactory(components = {}) {
     let Component;
     if ('type' in props) {
       const { type, kind } = props;
-      let Cmp = cmps[type];
+      let Cmp = currentCmps[type];
 
       if (!Cmp) {
         if (type === 'container') {
           if (kind === 'inline') {
-            Cmp = cmps.span;
+            Cmp = currentCmps.span;
           }
-          Cmp = cmps.div;
+          Cmp = currentCmps.div;
         } else if (type === null && props.textContent) {
           return props.textContent;
         }
@@ -79,3 +83,5 @@ export default function ChunkFactory(components = {}) {
 
   return Chunk;
 }
+
+export default ChunkFactory();

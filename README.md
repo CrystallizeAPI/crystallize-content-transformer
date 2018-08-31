@@ -1,17 +1,17 @@
 # crystallize-content-chunk
 
-Validation and parsing for CCC
+Validation, parsing and React rendering for Crystallize Content Chunk
 
 ## React chunk
 
 ```
-import ChunkFactory from '@crystallize/content-chunk/reactChunkFactory';
+import Chunk from '@crystallize/content-chunk/reactChunk';
 
-const Chunk = ChunkFactory({
+const overrides = {
   link: p => <MyLinkComponent href={p.metadata.href}>{p.textContent}</MyLinkComponent>
-})
+};
 
-<Chunk {...model}>
+<Chunk {...cccModel} overrides={overrides} />
 ```
 
 ## toHTML
