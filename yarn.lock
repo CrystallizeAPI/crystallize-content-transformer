@@ -60,6 +60,10 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
+"@babel/preset-stage-2@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@babel/preset-stage-2/-/preset-stage-2-7.0.0.tgz#11ec31263c8466aad63829bba724607029ddf0a5"
+
 "@babel/template@7.0.0-beta.44":
   version "7.0.0-beta.44"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.0.0-beta.44.tgz#f8832f4fdcee5d59bf515e595fc5106c529b394f"
