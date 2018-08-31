@@ -1,36 +1,3 @@
-/* eslint no-param-reassign: 0 */
-const isarray = require('isarray');
-
-function toText(model) {
-  function getTextFromNode(node) {
-    if (!node) {
-      return '';
-    }
-
-    let childrenText = '';
-    if (node.children) {
-      childrenText = node.children.reduce(
-        (acc, n) => acc + getTextFromNode(n),
-        ''
-      );
-    }
-
-    let content = '';
-
-    content += node.textContent || childrenText || '';
-
-    if (node.kind === 'block') {
-      content = `\n${content}\n`;
-    }
-
-    return content;
-  }
-
-  if (isarray(model)) {
-    return model.map(getTextFromNode).join('');
-  }
-
-  return getTextFromNode(model);
-}
+const toText = require('./toText');
 
 module.exports = { toText };

@@ -21,3 +21,11 @@ import toHTML from '@crystallize/content-chunk/toHTML';
 
 toHtml(cccModel);
 ```
+
+## toText
+
+```
+import toText from '@crystallize/content-chunk/toText';
+
+toText(cccModel);
+```
