@@ -1,3 +1,12 @@
+## 3.2.0 (2018-09-28)
+
+* Added logo ([3f99fc7](https://github.com/snowballdigital/crystallize-content-chunk/commit/3f99fc7))
+* Fix bleed of overrides between Chunks ([009a6f0](https://github.com/snowballdigital/crystallize-content-chunk/commit/009a6f0))
+* Fix build ([1f0bd77](https://github.com/snowballdigital/crystallize-content-chunk/commit/1f0bd77))
+* Release 3.1.1 ([de2cb0b](https://github.com/snowballdigital/crystallize-content-chunk/commit/de2cb0b))
+
+
+
 ## <small>3.1.1 (2018-08-31)</small>
 
 * Fix bleed of overrides between Chunks ([009a6f0](https://github.com/snowballdigital/crystallize-content-chunk/commit/009a6f0))
