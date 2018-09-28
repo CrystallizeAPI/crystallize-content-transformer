@@ -1,3 +1,5 @@
+![alt text](https://raw.githubusercontent.com/snowballdigital/crystallize-content-chunk/HEAD/media/logo.png 'Pie with slice')
+
 # crystallize-content-chunk
 
 Validation, parsing and React rendering for Crystallize Content Chunk
