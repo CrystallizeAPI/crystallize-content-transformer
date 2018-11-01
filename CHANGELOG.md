@@ -1,3 +1,9 @@
+## 3.3.0 (2018-11-01)
+
+* New git url ([a30e1b3](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/a30e1b3))
+
+
+
 ## 3.2.0 (2018-09-28)
 
 * Added logo ([3f99fc7](https://github.com/snowballdigital/crystallize-content-chunk/commit/3f99fc7))
