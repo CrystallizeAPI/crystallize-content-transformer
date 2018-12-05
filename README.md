@@ -4,6 +4,12 @@
 
 Validation, parsing and React rendering for [Crystallize Content Chunk](https://crystallize.com/developers/react-components/crystallize-content-chunk). Makes it easy to build React Commerce solitions with [Product Information Managmenet](https://crystallize.com/product/product-information-management) powered by [Crystallize](https://crystallize.com).
 
+## Install
+
+```
+yarn add @crystallize/content-chunk
+```
+
 ## React chunk
 
 ```
