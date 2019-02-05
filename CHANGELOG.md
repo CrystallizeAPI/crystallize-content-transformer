@@ -1,3 +1,11 @@
+## <small>3.3.1 (2019-02-05)</small>
+
+* Added validation examples in readme ([ccb7328](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/ccb7328))
+* Install instructions in readme ([b85b49b](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/b85b49b))
+* Update README.md ([c201350](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/c201350))
+
+
+
 ## 3.3.0 (2018-11-01)
 
 * New git url ([a30e1b3](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/a30e1b3))
