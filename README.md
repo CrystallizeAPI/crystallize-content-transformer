@@ -10,6 +10,15 @@ Validation, parsing and React rendering for [Crystallize Content Chunk](https://
 yarn add @crystallize/content-chunk
 ```
 
+## Validate
+
+```
+import CCC from '@crystallize/content-chunk'
+
+const isValid = CCC.isModelValid(myModel)
+const validationDetails = CCC.isModelValidVerbose(myModel)
+```
+
 ## React chunk
 
 ```
