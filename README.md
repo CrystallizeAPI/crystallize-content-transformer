@@ -2,7 +2,7 @@
 
 # crystallize-content-chunk
 
-Validation, parsing and React rendering for [Crystallize Content Chunk](https://crystallize.com/developers/react-components/crystallize-content-chunk). Makes it easy to build React Commerce solutions with [Product Information Managmenet](https://crystallize.com/product/product-information-management) powered by [Crystallize](https://crystallize.com) that enable [Fast Ecommerce API](https://crystallize.com/product/graphql-commerce-api).
+Validation, parsing and React rendering for [Crystallize Content Chunk](https://crystallize.com/developers/react-components/crystallize-content-chunk). Makes it easy to build React Commerce solutions with [Product Information Management](https://crystallize.com/product/product-information-management) powered by [Crystallize](https://crystallize.com) that enable [Fast Ecommerce API](https://crystallize.com/product/graphql-commerce-api).
 
 ## Install
 
