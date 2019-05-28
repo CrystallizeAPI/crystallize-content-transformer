@@ -1,3 +1,11 @@
+## <small>3.3.2 (2019-05-28)</small>
+
+* React Chunk: allow chunks with no type ([2099235](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/2099235))
+* Update README.md ([caacf00](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/caacf00))
+* Update README.md ([291dcb0](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/291dcb0))
+
+
+
 ## <small>3.3.1 (2019-02-05)</small>
 
 * Added validation examples in readme ([ccb7328](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/ccb7328))
