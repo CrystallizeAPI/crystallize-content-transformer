@@ -75,6 +75,8 @@ export default class Chunk extends React.Component {
         }
       }
       Component = Cmp;
+    } else if (props.kind === 'inline' && props.textContent) {
+      return props.textContent;
     }
 
     if (Component) {
