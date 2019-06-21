@@ -1,5 +1,5 @@
 const { toText } = require('./text');
-const { toHTML, fromHTML } = require('./html');
+const { toHTML, fromHTML } = require('./HTML');
 
 module.exports = {
   toText,
