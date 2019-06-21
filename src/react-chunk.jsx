@@ -29,8 +29,15 @@ export default class Chunk extends React.Component {
     }
   };
 
-  renderChunk = ({ children = [], textContent }) =>
-    textContent || children.map(this.renderChunkChild);
+  renderChunk = ({ children = [], textContent }) => {
+    if(children[0] && children[0].kind === 'block' && !children[0].type) {
+      return <br />;
+    } else {
+      return (
+        textContent || children.map(this.renderChunkChild)
+      );
+    }
+  }
 
   renderChunkChild = (c, i) => (
     <Chunk key={i} {...c} overrides={this.overrides} />
@@ -63,12 +70,11 @@ export default class Chunk extends React.Component {
     if ('type' in props) {
       const { type, kind } = props;
       let Cmp = currentCmps[type];
-
       if (!Cmp) {
         if (type === 'container') {
           if (kind === 'inline') {
             Cmp = currentCmps.span;
-          }
+          } 
           Cmp = currentCmps.div;
         } else if (type === null && props.textContent) {
           return props.textContent;
