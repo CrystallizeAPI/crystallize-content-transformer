@@ -1,3 +1,10 @@
+## <small>3.4.2 (2019-08-22)</small>
+
+* Fix casing in import ([da93266](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/da93266))
+* React chunk: render block nodes with just textContent ([994ddaa](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/994ddaa))
+
+
+
 ## <small>3.3.2 (2019-05-28)</small>
 
 * React Chunk: allow chunks with no type ([2099235](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/2099235))
