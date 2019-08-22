@@ -1,3 +1,9 @@
+## <small>4.0.2 (2019-08-22)</small>
+
+* Fixed logo href ([6384b10](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/6384b10))
+
+
+
 ## <small>4.0.1 (2019-08-22)</small>
 
 * Fixed react export name ([5b520c6](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/5b520c6))
