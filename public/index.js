@@ -4,13 +4,38 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 
-import { validModels } from '../tests/models';
-
 import Chunk from '../src/react-chunk';
+
+const model = {
+  kind: 'block',
+  type: 'paragraph',
+  children: [
+    {
+      kind: 'block'
+    },
+    {
+      kind: 'inline',
+      type: 'link',
+      children: [
+        {
+          kind: 'inline',
+          textContent: 'Mal arbeidsavtale fast ansettelse'
+        }
+      ],
+      metadata: {
+        href:
+          'https://origamipaperworks.com/maler/mal-arbeidsavtale-fast-ansettelse'
+      }
+    },
+    {
+      kind: 'block'
+    }
+  ]
+};
 
 ReactDOM.render(
   <div>
-    <Chunk {...validModels.paragraphWithEmptyBlocksAndLinks.ccc} />
+    <Chunk {...model} />
   </div>,
   document.getElementById('root')
 );

@@ -1,7 +1,22 @@
 /* eslint no-use-before-define: 0, react/prop-types: 0, react/no-array-index-key: 0 */
 import React from 'react';
 
-export default class Chunk extends React.Component {
+function renameChildrenToChldrn(obj) {
+  if ('children' in obj) {
+    const { children: chldrn, ...rest } = obj;
+
+    return {
+      ...rest,
+      chldrn: chldrn.map(renameChildrenToChldrn)
+    };
+  }
+
+  return obj;
+}
+
+const ChunkWrapper = props => <Chunk {...renameChildrenToChldrn(props)} />;
+
+class Chunk extends React.Component {
   defaultComponents = {
     div: p => <div>{this.renderChunk(p)}</div>,
     span: p => <span>{this.renderChunk(p)}</span>,
@@ -11,11 +26,9 @@ export default class Chunk extends React.Component {
     underline: p => <u>{this.renderChunk(p)}</u>,
     paragraph: p => <p>{this.renderChunk(p)}</p>,
     preformatted: p => <pre>{this.renderChunk(p)}</pre>,
-    'unordered-list': ({ children }) => (
-      <ul>{this.renderChunk({ children })}</ul>
-    ),
-    'ordered-list': ({ children }) => <ol>{this.renderChunk({ children })}</ol>,
-    list: ({ children }) => <ul>{this.renderChunk({ children })}</ul>,
+    'unordered-list': ({ chldrn }) => <ul>{this.renderChunk({ chldrn })}</ul>,
+    'ordered-list': ({ chldrn }) => <ol>{this.renderChunk({ chldrn })}</ol>,
+    list: ({ chldrn }) => <ul>{this.renderChunk({ chldrn })}</ul>,
     'list-item': p => <li>{this.renderChunk(p)}</li>,
     link: ({ metadata, ...rest }) => (
       <a href={metadata.href}>{this.renderChunk(rest)}</a>
@@ -29,12 +42,17 @@ export default class Chunk extends React.Component {
     }
   };
 
-  renderChunk = ({ children = [], textContent }) => {
-    if (children[0] && children[0].kind === 'block' && !children[0].type) {
-      return children[0].textContent || <br />;
+  renderChunk = ({ chldrn = [], textContent }) => {
+    if (
+      chldrn.length === 1 &&
+      chldrn[0] &&
+      chldrn[0].kind === 'block' &&
+      !chldrn[0].type
+    ) {
+      return <br />;
     }
 
-    return textContent || children.map(this.renderChunkChild);
+    return textContent || chldrn.map(this.renderChunkChild);
   };
 
   renderChunkChild = (c, i) => (
@@ -53,14 +71,14 @@ export default class Chunk extends React.Component {
     // An array has been passed to props
     const spreadedArray = '0' in props;
     if (spreadedArray) {
-      const children = Object.keys(props).reduce((arr, key) => {
+      const chldrn = Object.keys(props).reduce((arr, key) => {
         const index = parseInt(key, 10);
         if (!Number.isNaN(index)) {
           arr.push(props[key]);
         }
         return arr;
       }, []);
-      return children.map(this.renderChunkChild);
+      return chldrn.map(this.renderChunkChild);
     }
 
     // A node has been passed to props
@@ -81,8 +99,8 @@ export default class Chunk extends React.Component {
       Component = Cmp;
     } else if (props.textContent) {
       return props.textContent;
-    } else if (props.children && props.children.length > 0) {
-      return props.children.map(this.renderChunkChild);
+    } else if (props.chldrn && props.chldrn.length > 0) {
+      return props.chldrn.map(this.renderChunkChild);
     }
 
     if (Component) {
@@ -92,3 +110,5 @@ export default class Chunk extends React.Component {
     return null;
   }
 }
+
+export default ChunkWrapper;
