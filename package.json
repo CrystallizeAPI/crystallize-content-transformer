@@ -1,6 +1,6 @@
 {
   "name": "@crystallize/content-transformer",
-  "version": "0.0.1",
+  "version": "4.0.0",
   "description": "Validation and parsing for Crystallize Content",
   "main": "dist/index.js",
   "scripts": {

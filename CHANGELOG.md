@@ -1,3 +1,10 @@
+## 4.0.0 (2019-08-22)
+
+* Fix for passing array ([d240037](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/d240037))
+* Rename to Content Transformer ([4ea10b5](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/4ea10b5))
+
+
+
 ## <small>3.4.4 (2019-08-22)</small>
 
 * Added react-chunk test for block with textContent ([6435abc](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/6435abc))
