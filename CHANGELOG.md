@@ -1,3 +1,9 @@
+## <small>3.4.4 (2019-08-22)</small>
+
+* Added react-chunk test for block with textContent ([6435abc](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/6435abc))
+
+
+
 ## <small>3.4.3 (2019-08-22)</small>
 
 * Actual fix for block child with textContent ([215643a](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/215643a))
