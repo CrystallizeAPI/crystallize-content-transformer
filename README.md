@@ -1,4 +1,4 @@
-![alt text](https://raw.githubusercontent.com/snowballdigital/crystallize-content-transformer/HEAD/media/logo.png 'Pie with slice')
+![alt text](https://raw.githubusercontent.com/CrystallizeAPI/crystallize-content-transformer/HEAD/media/logo.png 'Pie with slice')
 
 # Crystallize Content Transformer
 
