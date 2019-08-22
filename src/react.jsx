@@ -23,35 +23,37 @@ function renameChildrenToChldrn(obj) {
   return obj;
 }
 
-const ChunkWrapper = props => <Chunk {...renameChildrenToChldrn(props)} />;
+const TransformerWrapper = props => (
+  <Transformer {...renameChildrenToChldrn(props)} />
+);
 
-class Chunk extends React.Component {
+class Transformer extends React.Component {
   defaultComponents = {
-    div: p => <div>{this.renderChunk(p)}</div>,
-    span: p => <span>{this.renderChunk(p)}</span>,
-    emphasized: p => <em>{this.renderChunk(p)}</em>,
-    strong: p => <strong>{this.renderChunk(p)}</strong>,
-    code: p => <code>{this.renderChunk(p)}</code>,
-    underline: p => <u>{this.renderChunk(p)}</u>,
-    paragraph: p => <p>{this.renderChunk(p)}</p>,
-    preformatted: p => <pre>{this.renderChunk(p)}</pre>,
-    'unordered-list': ({ chldrn }) => <ul>{this.renderChunk({ chldrn })}</ul>,
-    'ordered-list': ({ chldrn }) => <ol>{this.renderChunk({ chldrn })}</ol>,
-    list: ({ chldrn }) => <ul>{this.renderChunk({ chldrn })}</ul>,
-    'list-item': p => <li>{this.renderChunk(p)}</li>,
+    div: p => <div>{this.renderNode(p)}</div>,
+    span: p => <span>{this.renderNode(p)}</span>,
+    emphasized: p => <em>{this.renderNode(p)}</em>,
+    strong: p => <strong>{this.renderNode(p)}</strong>,
+    code: p => <code>{this.renderNode(p)}</code>,
+    underline: p => <u>{this.renderNode(p)}</u>,
+    paragraph: p => <p>{this.renderNode(p)}</p>,
+    preformatted: p => <pre>{this.renderNode(p)}</pre>,
+    'unordered-list': ({ chldrn }) => <ul>{this.renderNode({ chldrn })}</ul>,
+    'ordered-list': ({ chldrn }) => <ol>{this.renderNode({ chldrn })}</ol>,
+    list: ({ chldrn }) => <ul>{this.renderNode({ chldrn })}</ul>,
+    'list-item': p => <li>{this.renderNode(p)}</li>,
     link: ({ metadata, ...rest }) => (
-      <a href={metadata.href}>{this.renderChunk(rest)}</a>
+      <a href={metadata.href}>{this.renderNode(rest)}</a>
     ),
     'line-break': () => <br />,
     quote: p => {
       if (p.kind === 'block') {
-        return <blockquote>{this.renderChunk(p)}</blockquote>;
+        return <blockquote>{this.renderNode(p)}</blockquote>;
       }
-      return <q>{this.renderChunk(p)}</q>;
+      return <q>{this.renderNode(p)}</q>;
     }
   };
 
-  renderChunk = ({ chldrn = [], textContent }) => {
+  renderNode = ({ chldrn = [], textContent }) => {
     if (
       chldrn.length === 1 &&
       chldrn[0] &&
@@ -61,11 +63,11 @@ class Chunk extends React.Component {
       return <br />;
     }
 
-    return textContent || chldrn.map(this.renderChunkChild);
+    return textContent || chldrn.map(this.renderNodeChild);
   };
 
-  renderChunkChild = (c, i) => (
-    <Chunk key={i} {...c} overrides={this.overrides} />
+  renderNodeChild = (c, i) => (
+    <Transformer key={i} {...c} overrides={this.overrides} />
   );
 
   render() {
@@ -87,7 +89,7 @@ class Chunk extends React.Component {
         }
         return arr;
       }, []);
-      return chldrn.map(this.renderChunkChild);
+      return chldrn.map(this.renderNodeChild);
     }
 
     // A node has been passed to props
@@ -109,7 +111,7 @@ class Chunk extends React.Component {
     } else if (props.textContent) {
       return props.textContent;
     } else if (props.chldrn && props.chldrn.length > 0) {
-      return props.chldrn.map(this.renderChunkChild);
+      return props.chldrn.map(this.renderNodeChild);
     }
 
     if (Component) {
@@ -120,4 +122,4 @@ class Chunk extends React.Component {
   }
 }
 
-export default ChunkWrapper;
+export default TransformerWrapper;

@@ -3,8 +3,8 @@ const isarray = require('isarray');
 
 const helpers = require('./helpers');
 
-function getTagFromChunk({ kind, type, metadata }) {
-  const mapInstance = helpers.findHTMLTagByChunk({ kind, type, metadata });
+function getTagFromNode({ kind, type, metadata }) {
+  const mapInstance = helpers.findHTMLTagByNode({ kind, type, metadata });
   if (mapInstance) {
     return mapInstance.tagName;
   }
@@ -42,26 +42,26 @@ function parseTextContent(unsafeString) {
     .replace(/'/g, '&#039;');
 }
 
-function getHtmlFromChunk(chunk) {
-  const tagName = getTagFromChunk(chunk);
+function getHtmlFromNode(contentNode) {
+  const tagName = getTagFromNode(contentNode);
 
   let childrenHtml;
-  if (isarray(chunk.children)) {
-    childrenHtml = chunk.children.reduce(
-      (acc, n) => acc + getHtmlFromChunk(n),
+  if (isarray(contentNode.children)) {
+    childrenHtml = contentNode.children.reduce(
+      (acc, n) => acc + getHtmlFromNode(n),
       ''
     );
   }
 
   let content = '';
-  if (chunk.textContent) {
-    content = parseTextContent(chunk.textContent);
+  if (contentNode.textContent) {
+    content = parseTextContent(contentNode.textContent);
   } else if (childrenHtml) {
     content = childrenHtml;
   }
 
   if (tagName) {
-    const attrs = getAttributes({ tagName, ...chunk });
+    const attrs = getAttributes({ tagName, ...contentNode });
 
     const isSelfClosing = helpers.selfClosingTags.includes(tagName);
     if (isSelfClosing) {
@@ -80,10 +80,10 @@ function toHTML(model) {
   }
 
   if (isarray(model)) {
-    return model.map(getHtmlFromChunk).join('');
+    return model.map(getHtmlFromNode).join('');
   }
 
-  return getHtmlFromChunk(model);
+  return getHtmlFromNode(model);
 }
 
 module.exports = toHTML;

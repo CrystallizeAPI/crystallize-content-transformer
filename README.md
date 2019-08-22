@@ -1,48 +1,48 @@
-![alt text](https://raw.githubusercontent.com/snowballdigital/crystallize-content-chunk/HEAD/media/logo.png 'Pie with slice')
+![alt text](https://raw.githubusercontent.com/snowballdigital/crystallize-content-transformer/HEAD/media/logo.png 'Pie with slice')
 
-# crystallize-content-chunk
+# Crystallize Content Transformer
 
-Validation, parsing and React rendering for [Crystallize Content Chunk](https://crystallize.com/developers/react-components/crystallize-content-chunk). Makes it easy to build React Commerce solutions with [Product Information Management](https://crystallize.com/product/product-information-management) powered by [Crystallize](https://crystallize.com) that enable [Fast Ecommerce API](https://crystallize.com/product/graphql-commerce-api).
+Validation, parsing and transforming for [Crystallize Content](https://crystallize.com/developers/react-components/crystallize-content-transformer). Makes it easy to build React Commerce solutions with [Product Information Management](https://crystallize.com/product/product-information-management) powered by [Crystallize](https://crystallize.com) that enable [Fast Ecommerce API](https://crystallize.com/product/graphql-commerce-api).
 
 ## Install
 
 ```
-yarn add @crystallize/content-chunk
+yarn add @crystallize/content-transformer
 ```
 
 ## Validate
 
 ```
-import CCC from '@crystallize/content-chunk'
+import validator from '@crystallize/content-transformer';
 
-const isValid = CCC.isModelValid(myModel)
-const validationDetails = CCC.isModelValidVerbose(myModel)
+const isValid = validator.isModelValid(myModel);
+const validationDetails = validator.isModelValidVerbose(myModel);
 ```
 
-## React chunk
+## In React
 
 ```
-import Chunk from '@crystallize/content-chunk/reactChunk';
+import CrystallizeContent from '@crystallize/content-transformer/react';
 
 const overrides = {
   link: p => <MyLinkComponent href={p.metadata.href}>{p.textContent}</MyLinkComponent>
 };
 
-<Chunk {...cccModel} overrides={overrides} />
+<CrystallizeContent {...contentModel} overrides={overrides} />
 ```
 
 ## toHTML
 
 ```
-import toHTML from '@crystallize/content-chunk/toHTML';
+import toHTML from '@crystallize/content-transformer/toHTML';
 
-toHtml(cccModel);
+toHtml(contentModel);
 ```
 
 ## toText
 
 ```
-import toText from '@crystallize/content-chunk/toText';
+import toText from '@crystallize/content-transformer/toText';
 
-toText(cccModel);
+toText(contentModel);
 ```

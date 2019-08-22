@@ -84,18 +84,18 @@ function nodeHasContent(node) {
   return true;
 }
 
-function chunkHasContent(chunk) {
-  // Empty, inline chunks
+function contentNodeHasContent(contentNode) {
+  // Empty, inline contentNodes
   if (
-    chunk &&
-    chunk.kind === 'inline' &&
-    chunk.type === null &&
-    !chunk.textContent
+    contentNode &&
+    contentNode.kind === 'inline' &&
+    contentNode.type === null &&
+    !contentNode.textContent
   ) {
     return false;
   }
 
-  if (chunk) {
+  if (contentNode) {
     return true;
   }
 
@@ -109,7 +109,7 @@ function fromHTML(html, opt) {
   // ow(options.whitelistTags, ow.any(ow.nullOrUndefined, ow.array));
   // ow(options.blacklistTags, ow.any(ow.nullOrUndefined, ow.array));
 
-  function getChunkDefinition({ tagName }) {
+  function getcontentNodeDefinition({ tagName }) {
     const definition = helpers.HTMLElementToTypeMap[tagName];
 
     if (definition) {
@@ -138,11 +138,11 @@ function fromHTML(html, opt) {
     );
   }
 
-  function parseChunk(node) {
-    const chunkDefinition = getChunkDefinition(node);
+  function parsecontentNode(node) {
+    const contentNodeDefinition = getcontentNodeDefinition(node);
 
-    const chunk = {};
-    Object.assign(chunk, chunkDefinition);
+    const contentNode = {};
+    Object.assign(contentNode, contentNodeDefinition);
 
     if (['meta', 'style'].includes(node.nodeName)) {
       return null;
@@ -150,23 +150,23 @@ function fromHTML(html, opt) {
 
     const metadata = getMetadataFromNode(node);
     if (metadata) {
-      if (!chunk.metadata) {
-        chunk.metadata = {};
+      if (!contentNode.metadata) {
+        contentNode.metadata = {};
       }
-      Object.assign(chunk.metadata, metadata);
+      Object.assign(contentNode.metadata, metadata);
     }
 
     const textContent = getTextContent(node, opt);
     if (textContent) {
-      chunk.textContent = textContent;
+      contentNode.textContent = textContent;
     } else if (node.childNodes && node.childNodes.length > 0) {
-      chunk.children = Array.from(node.childNodes)
+      contentNode.children = Array.from(node.childNodes)
         .filter(nodeHasContent)
-        .map(parseChunk)
-        .filter(chunkHasContent);
+        .map(parsecontentNode)
+        .filter(contentNodeHasContent);
     }
 
-    return chunk;
+    return contentNode;
   }
 
   if (!html) {
@@ -176,10 +176,12 @@ function fromHTML(html, opt) {
   const fragment = parse5.parseFragment(html);
 
   if (fragment.childNodes.length === 1) {
-    return parseChunk(fragment.childNodes[0]);
+    return parsecontentNode(fragment.childNodes[0]);
   }
 
-  return fragment.childNodes.map(parseChunk).filter(chunkHasContent);
+  return fragment.childNodes
+    .map(parsecontentNode)
+    .filter(contentNodeHasContent);
 }
 
 module.exports = fromHTML;

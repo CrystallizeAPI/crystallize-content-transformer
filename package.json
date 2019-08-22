@@ -1,11 +1,11 @@
 {
-  "name": "@crystallize/content-chunk",
-  "version": "3.4.4",
-  "description": "Validation and parsing for CCC",
+  "name": "@crystallize/content-transformer",
+  "version": "0.0.1",
+  "description": "Validation and parsing for Crystallize Content",
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint src",
-    "build": "webpack --mode=development && mv ./dist/toHTML.js ./ && mv ./dist/toText.js ./ && mv ./dist/reactChunk.js ./",
+    "build": "webpack --mode=development && mv ./dist/toHTML.js ./ && mv ./dist/toText.js ./ && mv ./dist/react.js ./",
     "test": "jest",
     "test:watch": "jest --watch",
     "prepare": "npm run validate && npm run build",
@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:CrystallizeAPI/crystallize-content-chunk.git"
+    "url": "git@github.com:CrystallizeAPI/crystallize-content-transformer.git"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CrystallizeAPI/crystallize-content-chunk/issues"
+    "url": "https://github.com/CrystallizeAPI/crystallize-content-transformer/issues"
   },
-  "homepage": "https://github.com/CrystallizeAPI/crystallize-content-chunk#readme",
+  "homepage": "https://github.com/CrystallizeAPI/crystallize-content-transformer#readme",
   "devDependencies": {
     "@babel/preset-stage-2": "^7.0.0",
     "babel-cli": "^6.26.0",

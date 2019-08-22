@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 
-import Chunk from '../src/react-chunk';
+import Content from '../src/react';
 
 const model = [
   {
@@ -151,7 +151,7 @@ const model = [
 
 ReactDOM.render(
   <div>
-    <Chunk {...model} />
+    <Content {...model} />
   </div>,
   document.getElementById('root')
 );

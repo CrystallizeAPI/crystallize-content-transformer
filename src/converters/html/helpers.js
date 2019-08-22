@@ -217,7 +217,7 @@ const selfClosingTags = ['br'];
 
 const keys = Object.keys(HTMLElementToTypeMap);
 
-function findHTMLTagByChunk({ kind, type, metadata = {} }) {
+function findHTMLTagByNode({ kind, type, metadata = {} }) {
   for (let x = 0; x < keys.length; x++) {
     const tagName = keys[x];
     const item = HTMLElementToTypeMap[tagName];
@@ -264,7 +264,7 @@ function getValidAttributes({ tagName }) {
 
 module.exports = {
   HTMLElementToTypeMap,
-  findHTMLTagByChunk,
+  findHTMLTagByNode,
   validAttributesMap,
   getValidAttributes,
   selfClosingTags

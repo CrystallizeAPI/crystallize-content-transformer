@@ -130,7 +130,7 @@ validModels.withEmptyTextChilds = {
   html: '<p><span>Hello </span><em>you</em> <em>dog</em></p>'
 };
 
-/* A complex chunk */
+/* A complex node */
 validModels.complex = {
   ccc: [
     {

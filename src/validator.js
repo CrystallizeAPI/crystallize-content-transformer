@@ -1,18 +1,18 @@
 const validator = require('is-my-json-valid');
 
 const schema = {
-  title: 'Crystallize Content Chunk',
+  title: 'Crystallize Content Transformer',
   version: '1.0.0',
 
   definitions: {
-    chunk: {
+    node: {
       type: ['object', 'null'],
       additionalProperties: false,
       properties: {
         kind: {
           required: true,
           enum: ['block', 'inline'],
-          description: 'The chunk kind'
+          description: 'The node kind'
         },
         type: {
           required: true,
@@ -76,7 +76,7 @@ const schema = {
           type: 'array',
           required: false,
           items: {
-            $ref: '#/definitions/chunk'
+            $ref: '#/definitions/node'
           }
         },
         metadata: {
@@ -89,12 +89,12 @@ const schema = {
 
   oneOf: [
     {
-      $ref: '#/definitions/chunk'
+      $ref: '#/definitions/node'
     },
     {
       type: 'array',
       items: {
-        $ref: '#/definitions/chunk'
+        $ref: '#/definitions/node'
       }
     }
   ]
