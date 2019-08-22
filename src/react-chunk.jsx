@@ -2,6 +2,15 @@
 import React from 'react';
 
 function renameChildrenToChldrn(obj) {
+  // An array has been passed
+  if ('0' in obj) {
+    const retObj = {};
+    Object.keys(obj).forEach(key => {
+      retObj[key] = renameChildrenToChldrn(obj[key]);
+    });
+    return retObj;
+  }
+
   if ('children' in obj) {
     const { children: chldrn, ...rest } = obj;
 
