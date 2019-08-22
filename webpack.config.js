@@ -5,7 +5,7 @@ module.exports = {
     index: './src/index.js',
     toHTML: './src/converters/html/toHTML.js',
     toText: './src/converters/text/toText.js',
-    reactContentTransformer: './src/react.jsx'
+    react: './src/react.jsx'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
