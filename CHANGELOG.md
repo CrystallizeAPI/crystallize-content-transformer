@@ -1,3 +1,9 @@
+## <small>4.0.1 (2019-08-22)</small>
+
+* Fixed react export name ([5b520c6](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/5b520c6))
+
+
+
 ## 4.0.0 (2019-08-22)
 
 * Fix for passing array ([d240037](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/d240037))
