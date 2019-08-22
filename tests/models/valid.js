@@ -224,6 +224,15 @@ validModels.withStrongTag = {
   html: '<p><strong>sad</strong>asd</p>'
 };
 
+validModels.withBlockNodesHavingTextContent = {
+  ccc: {
+    kind: 'block',
+    type: 'container',
+    textContent: 'hey'
+  },
+  html: '<div>hey</div>'
+};
+
 module.exports = {
   validModels
 };
