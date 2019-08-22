@@ -1,21 +1,47 @@
-const { fromHTML } = require('./src');
+const { toHTML } = require('./src');
 
-const html = `<b>hey</b><i>i</i>`;
-const model = fromHTML(html, {
-  whitelistTags: [
-    'p',
-    'b',
-    'i',
-    'u',
-    'ol',
-    'ul',
-    'li',
-    'blockquote',
-    'code',
-    'pre',
-    'a'
-  ]
-});
+const model = {
+  kind: 'block',
+  type: 'paragraph',
+  children: [
+    {
+      kind: 'block'
+    },
+    {
+      kind: 'inline',
+      type: 'link',
+      children: [
+        {
+          kind: 'inline',
+          textContent: 'Mal arbeidsavtale fast ansettelse'
+        }
+      ],
+      metadata: {
+        href:
+          'https://origamipaperworks.com/maler/mal-arbeidsavtale-fast-ansettelse'
+      }
+    },
+    {
+      kind: 'block'
+    },
+    {
+      kind: 'inline',
+      type: 'link',
+      children: [
+        {
+          kind: 'block'
+        }
+      ],
+      metadata: {
+        href:
+          'https://origamipaperworks.com/maler/mal-arbeidsavtale-fast-ansettelse'
+      }
+    },
+    {
+      kind: 'block'
+    }
+  ],
+  metadata: {}
+};
 
-console.log(JSON.stringify(model, null, 3));
-// console.log(toHTML(model));
+console.log(toHTML(model));
