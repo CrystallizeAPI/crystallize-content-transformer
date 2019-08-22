@@ -1,6 +1,6 @@
 {
   "name": "@crystallize/content-chunk",
-  "version": "3.4.2",
+  "version": "3.4.3",
   "description": "Validation and parsing for CCC",
   "main": "dist/index.js",
   "scripts": {

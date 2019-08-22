@@ -1,3 +1,9 @@
+## <small>3.4.3 (2019-08-22)</small>
+
+* Actual fix for block child with textContent ([215643a](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/215643a))
+
+
+
 ## <small>3.4.2 (2019-08-22)</small>
 
 * Fix casing in import ([da93266](https://github.com/CrystallizeAPI/crystallize-content-chunk/commit/da93266))
