@@ -1,3 +1,9 @@
+## 4.1.0 (2019-08-26)
+
+* Leaner react export ([d7c23a3](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/d7c23a3))
+
+
+
 ## <small>4.0.3 (2019-08-26)</small>
 
 * Fixed react rendering of line breaks ([fd7f221](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/fd7f221))
