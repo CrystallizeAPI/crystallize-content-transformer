@@ -1,3 +1,9 @@
+## <small>4.0.3 (2019-08-26)</small>
+
+* Fixed react rendering of line breaks ([fd7f221](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/fd7f221))
+
+
+
 ## <small>4.0.2 (2019-08-22)</small>
 
 * Fixed logo href ([6384b10](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/6384b10))
