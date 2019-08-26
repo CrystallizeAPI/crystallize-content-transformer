@@ -22,18 +22,17 @@ const model = {
     },
     {
       kind: 'inline',
-      textContent: ' dude'
+      textContent: '\n dude'
     }
-  ],
-  metadata: {}
+  ]
 };
 
 describe('<CrystallizeContent >', () => {
-  it('renders correctly block node with textContent', () => {
+  it('renders correctly block node with line breaks', () => {
     const wrapper = shallow(<CrystallizeContent {...model} />);
 
     expect(wrapper.html()).toEqual(
-      '<p><a href="https://crystallize.com">Crystallize</a> dude</p>'
+      '<p><a href="https://crystallize.com">Crystallize</a><br/> dude</p>'
     );
   });
 });

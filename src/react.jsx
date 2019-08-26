@@ -53,14 +53,16 @@ class Transformer extends React.Component {
     }
   };
 
-  renderNode = ({ chldrn = [], textContent }) => {
-    return (
-      this.renderTextContent(textContent) || chldrn.map(this.renderNodeChild)
-    );
-  };
+  renderNode = ({ chldrn = [], textContent }) =>
+    this.renderTextContent(textContent) || chldrn.map(this.renderNodeChild);
 
   renderTextContent = text => {
-    const partsBetweenLineBreaks = (text || '').split(/\n/g);
+    if (!text) {
+      return text;
+    }
+
+    // Handle line breaks (\n) in text content
+    const partsBetweenLineBreaks = text.split(/\n/g);
     if (partsBetweenLineBreaks.length === 1) {
       return text;
     }
@@ -126,7 +128,9 @@ class Transformer extends React.Component {
     }
 
     if (Component) {
-      return <Component {...props} renderNode={this.renderNode} />;
+      return (
+        <Component {...props} renderTextContent={this.renderTextContent} />
+      );
     }
 
     return null;

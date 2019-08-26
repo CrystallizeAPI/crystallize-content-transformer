@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint src",
-    "build": "webpack --mode=development && mv ./dist/toHTML.js ./ && mv ./dist/toText.js ./ && mv ./dist/react.js ./",
+    "build": "webpack --mode=development && mv ./dist/toHTML.js ./ && mv ./dist/toText.js ./ && npm run build:react",
+    "build:react": "babel ./src/react.jsx --out-file ./react.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "prepare": "npm run validate && npm run build",
@@ -27,39 +28,35 @@
   },
   "homepage": "https://github.com/CrystallizeAPI/crystallize-content-transformer#readme",
   "devDependencies": {
-    "@babel/preset-stage-2": "^7.0.0",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.1.2",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-minify": "^0.4.3",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "babel-register": "^6.26.0",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.5.5",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-import-resolver-babel-module": "^4.0.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
     "husky": "^0.14.3",
-    "jest": "^22.4.4",
+    "jest": "^24.9.0",
     "nodemon": "^1.17.5",
-    "parcel-bundler": "^1.9.2",
-    "prettier": "^1.12.1",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.4"
+    "parcel-bundler": "^1.12.3",
+    "prettier": "^1.18.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
   },
   "dependencies": {
     "html2json": "^1.0.2",
@@ -103,6 +100,8 @@
     }
   },
   "jest": {
-    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js"
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.js"
+    ]
   }
 }

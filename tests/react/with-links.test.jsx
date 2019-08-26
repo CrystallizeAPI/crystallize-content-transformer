@@ -8,24 +8,17 @@ const model = {
   type: 'paragraph',
   children: [
     {
-      kind: 'block'
-    },
-    {
       kind: 'inline',
       type: 'link',
       children: [
         {
           kind: 'inline',
-          textContent: 'Mal arbeidsavtale fast ansettelse'
+          textContent: 'Click me'
         }
       ],
       metadata: {
-        href:
-          'https://origamipaperworks.com/maler/mal-arbeidsavtale-fast-ansettelse'
+        href: 'https://example.com'
       }
-    },
-    {
-      kind: 'block'
     }
   ]
 };
@@ -35,7 +28,7 @@ describe('<CrystallizeContent >', () => {
     const wrapper = shallow(<CrystallizeContent {...model} />);
 
     expect(wrapper.html()).toEqual(
-      '<p><a href="https://origamipaperworks.com/maler/mal-arbeidsavtale-fast-ansettelse">Mal arbeidsavtale fast ansettelse</a></p>'
+      '<p><a href="https://example.com">Click me</a></p>'
     );
   });
 });

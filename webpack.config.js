@@ -4,8 +4,7 @@ module.exports = {
   entry: {
     index: './src/index.js',
     toHTML: './src/converters/html/toHTML.js',
-    toText: './src/converters/text/toText.js',
-    react: './src/react.jsx'
+    toText: './src/converters/text/toText.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -23,7 +22,7 @@ module.exports = {
           options: {
             presets: [
               [
-                'env',
+                '@babel/preset-env',
                 {
                   targets: {
                     browsers: ['> 0.5%', 'IE 8', 'iOS > 8', 'Safari > 8']
@@ -31,27 +30,13 @@ module.exports = {
                 }
               ]
             ],
-            plugins: ['transform-object-rest-spread']
-          }
-        }
-      },
-      {
-        test: /\.jsx$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [['env', { modules: false }], 'stage-2', 'react']
+            plugins: [
+              '@babel/plugin-transform-runtime',
+              '@babel/plugin-proposal-object-rest-spread'
+            ]
           }
         }
       }
     ]
-  },
-  externals: {
-    react: {
-      commonjs: 'react',
-      commonjs2: 'react',
-      amd: 'react'
-    }
   }
 };
