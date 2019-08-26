@@ -1,32 +1,6 @@
 /* eslint no-use-before-define: 0, react/prop-types: 0, react/no-array-index-key: 0 */
 import React from 'react';
 
-function renameChildrenToChldrn(obj) {
-  // An array has been passed
-  if ('0' in obj) {
-    const retObj = {};
-    Object.keys(obj).forEach(key => {
-      retObj[key] = renameChildrenToChldrn(obj[key]);
-    });
-    return retObj;
-  }
-
-  if ('children' in obj) {
-    const { children: chldrn, ...rest } = obj;
-
-    return {
-      ...rest,
-      chldrn: chldrn.map(renameChildrenToChldrn)
-    };
-  }
-
-  return obj;
-}
-
-const TransformerWrapper = props => (
-  <Transformer {...renameChildrenToChldrn(props)} />
-);
-
 class Transformer extends React.Component {
   defaultComponents = {
     div: p => <div>{this.renderNode(p)}</div>,
@@ -37,9 +11,15 @@ class Transformer extends React.Component {
     underline: p => <u>{this.renderNode(p)}</u>,
     paragraph: p => <p>{this.renderNode(p)}</p>,
     preformatted: p => <pre>{this.renderNode(p)}</pre>,
-    'unordered-list': ({ chldrn }) => <ul>{this.renderNode({ chldrn })}</ul>,
-    'ordered-list': ({ chldrn }) => <ol>{this.renderNode({ chldrn })}</ol>,
-    list: ({ chldrn }) => <ul>{this.renderNode({ chldrn })}</ul>,
+    'unordered-list': ({ children, chldrn }) => (
+      <ul>{this.renderNode({ children, chldrn })}</ul>
+    ),
+    'ordered-list': ({ children, chldrn }) => (
+      <ol>{this.renderNode({ children, chldrn })}</ol>
+    ),
+    list: ({ children, chldrn }) => (
+      <ul>{this.renderNode({ children, chldrn })}</ul>
+    ),
     'list-item': p => <li>{this.renderNode(p)}</li>,
     link: ({ metadata, ...rest }) => (
       <a href={metadata.href}>{this.renderNode(rest)}</a>
@@ -53,8 +33,9 @@ class Transformer extends React.Component {
     }
   };
 
-  renderNode = ({ chldrn = [], textContent }) =>
-    this.renderTextContent(textContent) || chldrn.map(this.renderNodeChild);
+  renderNode = ({ chldrn, children = [], textContent }) =>
+    this.renderTextContent(textContent) ||
+    (chldrn || children).map(this.renderNodeChild);
 
   renderTextContent = text => {
     if (!text) {
@@ -95,14 +76,14 @@ class Transformer extends React.Component {
     // An array has been passed to props
     const spreadedArray = '0' in props;
     if (spreadedArray) {
-      const chldrn = Object.keys(props).reduce((arr, key) => {
+      const children = Object.keys(props).reduce((arr, key) => {
         const index = parseInt(key, 10);
         if (!Number.isNaN(index)) {
           arr.push(props[key]);
         }
         return arr;
       }, []);
-      return chldrn.map(this.renderNodeChild);
+      return children.map(this.renderNodeChild);
     }
 
     // A node has been passed to props
@@ -123,8 +104,11 @@ class Transformer extends React.Component {
       Component = Cmp;
     } else if (props.textContent) {
       return this.renderTextContent(props.textContent);
-    } else if (props.chldrn && props.chldrn.length > 0) {
-      return props.chldrn.map(this.renderNodeChild);
+    } else {
+      const chldrn = props.chldrn || props.children;
+      if (chldrn && chldrn.length > 0) {
+        return chldrn.map(this.renderNodeChild);
+      }
     }
 
     if (Component) {
@@ -137,4 +121,4 @@ class Transformer extends React.Component {
   }
 }
 
-export default TransformerWrapper;
+export default Transformer;

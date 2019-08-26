@@ -3,6 +3,8 @@ import { shallow } from 'enzyme';
 
 import CrystallizeContent from '../../src/react';
 
+import { transformModelForTests } from './_util';
+
 const model = {
   kind: 'block',
   type: 'paragraph',
@@ -23,9 +25,11 @@ const model = {
   ]
 };
 
-describe('<CrystallizeContent >', () => {
+describe('<CrystallizeContent />', () => {
   it('renders correctly block node with textContent', () => {
-    const wrapper = shallow(<CrystallizeContent {...model} />);
+    const wrapper = shallow(
+      <CrystallizeContent {...transformModelForTests(model)} />
+    );
 
     expect(wrapper.html()).toEqual(
       '<p><a href="https://example.com">Click me</a></p>'
