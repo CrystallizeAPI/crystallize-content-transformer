@@ -54,16 +54,27 @@ class Transformer extends React.Component {
   };
 
   renderNode = ({ chldrn = [], textContent }) => {
-    if (
-      chldrn.length === 1 &&
-      chldrn[0] &&
-      chldrn[0].kind === 'block' &&
-      !chldrn[0].type
-    ) {
-      return <br />;
-    }
+    return (
+      this.renderTextContent(textContent) || chldrn.map(this.renderNodeChild)
+    );
+  };
 
-    return textContent || chldrn.map(this.renderNodeChild);
+  renderTextContent = text => {
+    const partsBetweenLineBreaks = (text || '').split(/\n/g);
+    if (partsBetweenLineBreaks.length === 1) {
+      return text;
+    }
+    return partsBetweenLineBreaks.map((part, index) => {
+      if (index === partsBetweenLineBreaks.length - 1) {
+        return part;
+      }
+      return (
+        <React.Fragment>
+          {part}
+          <br />
+        </React.Fragment>
+      );
+    });
   };
 
   renderNodeChild = (c, i) => (
@@ -104,18 +115,18 @@ class Transformer extends React.Component {
           }
           Cmp = currentCmps.div;
         } else if (type === null && props.textContent) {
-          return props.textContent;
+          return this.renderTextContent(props.textContent);
         }
       }
       Component = Cmp;
     } else if (props.textContent) {
-      return props.textContent;
+      return this.renderTextContent(props.textContent);
     } else if (props.chldrn && props.chldrn.length > 0) {
       return props.chldrn.map(this.renderNodeChild);
     }
 
     if (Component) {
-      return <Component {...props} />;
+      return <Component {...props} renderNode={this.renderNode} />;
     }
 
     return null;

@@ -1,10 +1,7 @@
 import React from 'react';
-import { configure, shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { shallow } from 'enzyme';
 
-import CrystallizeContent from '../src/react';
-
-configure({ adapter: new Adapter() });
+import CrystallizeContent from '../../src/react';
 
 const model = {
   kind: 'block',
