@@ -9,6 +9,8 @@ exports.default = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
+var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
+
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
@@ -23,39 +25,9 @@ var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
-var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutProperties"));
-
 var _react = _interopRequireDefault(require("react"));
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function renameChildrenToChldrn(obj) {
-  // An array has been passed
-  if ('0' in obj) {
-    var retObj = {};
-    Object.keys(obj).forEach(function (key) {
-      retObj[key] = renameChildrenToChldrn(obj[key]);
-    });
-    return retObj;
-  }
-
-  if ('children' in obj) {
-    var chldrn = obj.children,
-        rest = (0, _objectWithoutProperties2.default)(obj, ["children"]);
-    return _objectSpread({}, rest, {
-      chldrn: chldrn.map(renameChildrenToChldrn)
-    });
-  }
-
-  return obj;
-}
-
-var TransformerWrapper = function TransformerWrapper(props) {
-  return _react.default.createElement(Transformer, renameChildrenToChldrn(props));
-};
-
+/* eslint no-use-before-define: 0, react/prop-types: 0, react/no-array-index-key: 0 */
 var Transformer =
 /*#__PURE__*/
 function (_React$Component) {
@@ -99,20 +71,26 @@ function (_React$Component) {
         return _react.default.createElement("pre", null, _this.renderNode(p));
       },
       'unordered-list': function unorderedList(_ref) {
-        var chldrn = _ref.chldrn;
+        var children = _ref.children,
+            chldrn = _ref.chldrn;
         return _react.default.createElement("ul", null, _this.renderNode({
+          children: children,
           chldrn: chldrn
         }));
       },
       'ordered-list': function orderedList(_ref2) {
-        var chldrn = _ref2.chldrn;
+        var children = _ref2.children,
+            chldrn = _ref2.chldrn;
         return _react.default.createElement("ol", null, _this.renderNode({
+          children: children,
           chldrn: chldrn
         }));
       },
       list: function list(_ref3) {
-        var chldrn = _ref3.chldrn;
+        var children = _ref3.children,
+            chldrn = _ref3.chldrn;
         return _react.default.createElement("ul", null, _this.renderNode({
+          children: children,
           chldrn: chldrn
         }));
       },
@@ -138,10 +116,11 @@ function (_React$Component) {
       }
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "renderNode", function (_ref5) {
-      var _ref5$chldrn = _ref5.chldrn,
-          chldrn = _ref5$chldrn === void 0 ? [] : _ref5$chldrn,
+      var chldrn = _ref5.chldrn,
+          _ref5$children = _ref5.children,
+          children = _ref5$children === void 0 ? [] : _ref5$children,
           textContent = _ref5.textContent;
-      return _this.renderTextContent(textContent) || chldrn.map(_this.renderNodeChild);
+      return _this.renderTextContent(textContent) || (chldrn || children).map(_this.renderNodeChild);
     });
     (0, _defineProperty2.default)((0, _assertThisInitialized2.default)(_this), "renderTextContent", function (text) {
       if (!text) {
@@ -190,7 +169,7 @@ function (_React$Component) {
       var spreadedArray = '0' in props;
 
       if (spreadedArray) {
-        var chldrn = Object.keys(props).reduce(function (arr, key) {
+        var children = Object.keys(props).reduce(function (arr, key) {
           var index = parseInt(key, 10);
 
           if (!Number.isNaN(index)) {
@@ -199,7 +178,7 @@ function (_React$Component) {
 
           return arr;
         }, []);
-        return chldrn.map(this.renderNodeChild);
+        return children.map(this.renderNodeChild);
       } // A node has been passed to props
 
 
@@ -225,8 +204,12 @@ function (_React$Component) {
         Component = Cmp;
       } else if (props.textContent) {
         return this.renderTextContent(props.textContent);
-      } else if (props.chldrn && props.chldrn.length > 0) {
-        return props.chldrn.map(this.renderNodeChild);
+      } else {
+        var chldrn = props.chldrn || props.children;
+
+        if (chldrn && chldrn.length > 0) {
+          return chldrn.map(this.renderNodeChild);
+        }
       }
 
       if (Component) {
@@ -241,5 +224,5 @@ function (_React$Component) {
   return Transformer;
 }(_react.default.Component);
 
-var _default = TransformerWrapper;
+var _default = Transformer;
 exports.default = _default;
