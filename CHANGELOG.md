@@ -1,3 +1,10 @@
+## 5.1.0 (2020-02-14)
+
+* Added release script ([8b1a3f6](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/8b1a3f6))
+* Include renderNode in the react component override ([329f546](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/329f546))
+
+
+
 ## 4.1.0 (2019-08-26)
 
 * Leaner react export ([d7c23a3](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/d7c23a3))
