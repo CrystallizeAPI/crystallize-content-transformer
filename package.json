@@ -55,6 +55,7 @@
     "prettier": "^1.18.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "release-it": "7.6.1",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7"
   },

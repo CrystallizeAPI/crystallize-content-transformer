@@ -61,7 +61,12 @@ class Transformer extends React.Component {
   };
 
   renderNodeChild = (c, i) => (
-    <Transformer key={i} {...c} overrides={this.overrides} />
+    <Transformer
+      key={i}
+      {...c}
+      overrides={this.overrides}
+      renderNode={this.renderNode}
+    />
   );
 
   render() {
