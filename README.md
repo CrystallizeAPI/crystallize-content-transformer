@@ -39,6 +39,14 @@ import toHTML from '@crystallize/content-transformer/toHTML';
 toHtml(contentModel);
 ```
 
+## fromHTML
+
+```
+import fromHTML from '@crystallize/content-transformer/fromHTML';
+
+fromHTML(contentModel);
+```
+
 ## toText
 
 ```

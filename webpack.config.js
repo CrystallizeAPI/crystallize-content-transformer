@@ -4,6 +4,7 @@ module.exports = {
   entry: {
     index: './src/index.js',
     toHTML: './src/converters/html/toHTML.js',
+    fromHTML: './src/converters/html/fromHTML.js',
     toText: './src/converters/text/toText.js'
   },
   output: {

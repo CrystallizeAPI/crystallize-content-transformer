@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint src",
-    "build": "webpack --mode=development && mv ./dist/toHTML.js ./ && mv ./dist/toText.js ./ && npm run build:react",
+    "build": "webpack --mode=development && mv ./dist/toHTML.js ./ && mv ./dist/fromHTML.js ./ && mv ./dist/toText.js ./ && npm run build:react",
     "build:react": "babel ./src/react.jsx --out-file ./react.js",
     "test": "jest",
     "test:watch": "jest --watch",
