@@ -1,3 +1,9 @@
+## 5.2.0 (2020-03-10)
+
+* Expose the fromHTML method ([9736e11](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/9736e11))
+
+
+
 ## 5.1.0 (2020-02-14)
 
 * Added release script ([8b1a3f6](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/8b1a3f6))
