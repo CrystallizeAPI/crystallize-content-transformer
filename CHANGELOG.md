@@ -1,3 +1,9 @@
+## <small>5.2.1 (2020-03-10)</small>
+
+* Hide fromHTML from readme until we have it resolved ([73eda26](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/73eda26))
+
+
+
 ## 5.2.0 (2020-03-10)
 
 * Expose the fromHTML method ([9736e11](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/9736e11))
