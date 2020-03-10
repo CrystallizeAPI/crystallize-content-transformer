@@ -146,7 +146,8 @@ function (_React$Component) {
       return _react.default.createElement(Transformer, (0, _extends2.default)({
         key: i
       }, c, {
-        overrides: _this.overrides
+        overrides: _this.overrides,
+        renderNode: _this.renderNode
       }));
     });
     return _this;
