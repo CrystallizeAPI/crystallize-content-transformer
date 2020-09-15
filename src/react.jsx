@@ -1,5 +1,5 @@
 /* eslint no-use-before-define: 0, react/prop-types: 0, react/no-array-index-key: 0 */
-import React from 'react';
+const React = require('react');
 
 class Transformer extends React.Component {
   defaultComponents = {
