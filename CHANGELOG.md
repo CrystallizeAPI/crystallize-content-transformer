@@ -1,3 +1,14 @@
+## 6.0.0 (2020-09-15)
+
+* Bump elliptic from 6.4.0 to 6.5.3 ([1189ba6](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/1189ba6))
+* Bump handlebars from 4.1.2 to 4.5.3 ([e03e286](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/e03e286))
+* Bump mixin-deep from 1.3.1 to 1.3.2 ([46e1abc](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/46e1abc))
+* Bump safer-eval from 1.2.3 to 1.3.5 ([447128f](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/447128f))
+* Bump static-eval from 2.0.0 to 2.1.0 ([02e5c17](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/02e5c17))
+* Skipping webpack for text and HTML converters ([b55983d](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/b55983d))
+
+
+
 ## <small>5.2.1 (2020-03-10)</small>
 
 * Hide fromHTML from readme until we have it resolved ([73eda26](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/73eda26))
