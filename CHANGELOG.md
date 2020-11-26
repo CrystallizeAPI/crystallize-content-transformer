@@ -1,3 +1,9 @@
+## 6.1.0 (2020-11-26)
+
+* toText: remove first and last new line ([cb0f50a](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/cb0f50a))
+
+
+
 ## 6.0.0 (2020-09-15)
 
 * Bump elliptic from 6.4.0 to 6.5.3 ([1189ba6](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/1189ba6))
