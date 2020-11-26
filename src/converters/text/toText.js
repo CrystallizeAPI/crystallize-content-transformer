@@ -1,6 +1,15 @@
 /* eslint no-param-reassign: 0 */
 const isarray = require('isarray');
 
+function trim(string) {
+  if (!string) {
+    return '';
+  }
+
+  // Remove first and last new line
+  return string.replace(/^\r|\n/, '').replace(/\r|\n$/, '');
+}
+
 function toText(model) {
   function getTextFromNode(node) {
     if (!node) {
@@ -27,10 +36,10 @@ function toText(model) {
   }
 
   if (isarray(model)) {
-    return model.map(getTextFromNode).join('');
+    return trim(model.map(getTextFromNode).join(''));
   }
 
-  return getTextFromNode(model);
+  return trim(getTextFromNode(model));
 }
 
 module.exports = toText;
