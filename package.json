@@ -2,7 +2,7 @@
   "name": "@crystallize/content-transformer",
   "version": "6.1.0",
   "description": "Validation and parsing for Crystallize Content",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "scripts": {
     "lint": "eslint src",
     "build": "npm run build:react",
