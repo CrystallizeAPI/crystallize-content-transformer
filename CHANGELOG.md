@@ -1,3 +1,9 @@
+## 7.0.0 (2021-02-11)
+
+* Fixed main entry point ([3417cc7](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/3417cc7))
+
+
+
 ## 6.1.0 (2020-11-26)
 
 * toText: remove first and last new line ([cb0f50a](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/cb0f50a))
