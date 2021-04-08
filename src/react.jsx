@@ -1,6 +1,8 @@
 /* eslint no-use-before-define: 0, react/prop-types: 0, react/no-array-index-key: 0 */
 const React = require('react');
 
+console.warn(`@crystallize/content-transformer/react is deprecated and is not maintained any longer. Please use @crystallize/react-content-transformer instead`)
+
 class Transformer extends React.Component {
   defaultComponents = {
     div: p => <div>{this.renderNode(p)}</div>,
