@@ -19,18 +19,6 @@ const isValid = validator.isModelValid(myModel);
 const validationDetails = validator.isModelValidVerbose(myModel);
 ```
 
-## In React
-
-```
-import CrystallizeContent from '@crystallize/content-transformer/react';
-
-const overrides = {
-  link: p => <MyLinkComponent href={p.metadata.href}>{p.textContent}</MyLinkComponent>
-};
-
-<CrystallizeContent {...contentModel} overrides={overrides} />
-```
-
 ## toHTML
 
 ```
@@ -46,3 +34,7 @@ import toText from '@crystallize/content-transformer/toText';
 
 toText(contentModel);
 ```
+
+## React
+
+See [@crystallize/react-content-transformer](https://www.npmjs.com/package/@crystallize/react-content-transformer)
