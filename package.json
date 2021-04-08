@@ -1,6 +1,6 @@
 {
   "name": "@crystallize/content-transformer",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Validation and parsing for Crystallize Content",
   "main": "src/index.js",
   "scripts": {
@@ -40,6 +40,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
+    "conventional-changelog": "^3.1.24",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^4.19.1",

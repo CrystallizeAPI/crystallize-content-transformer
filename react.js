@@ -32,6 +32,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 /* eslint no-use-before-define: 0, react/prop-types: 0, react/no-array-index-key: 0 */
 var React = require('react');
 
+console.warn("@crystallize/content-transformer/react is deprecated and is not maintained any longer. Please use @crystallize/react-content-transformer instead");
+
 var Transformer = /*#__PURE__*/function (_React$Component) {
   (0, _inherits2.default)(Transformer, _React$Component);
 
