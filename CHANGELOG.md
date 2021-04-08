@@ -1,3 +1,7 @@
+## 7.0.1 (2021-04-8)
+
+* Deprecated React module
+
 ## 7.0.0 (2021-02-11)
 
 * Fixed main entry point ([3417cc7](https://github.com/CrystallizeAPI/crystallize-content-transformer/commit/3417cc7))
