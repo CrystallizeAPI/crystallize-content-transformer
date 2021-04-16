@@ -1,10 +1,10 @@
 {
   "name": "@crystallize/content-transformer",
-  "version": "9.0.0",
+  "version": "9.0.1",
   "description": "Validation and parsing for Crystallize rich text content",
   "main": "src/index.js",
   "engines": {
-    "node": ">=14"
+    "node": ">=12"
   },
   "scripts": {
     "lint": "eslint src",
