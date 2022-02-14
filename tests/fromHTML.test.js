@@ -7,7 +7,7 @@ describe(`fromHTML special cases`, () => {
         <meta charset="utf-8">
         <p>hello</p>`;
     expect(fromHTML(html)).toEqual([
-      { kind: 'block', type: 'paragraph', textContent: 'hello' }
+      { kind: 'block', type: 'paragraph', textContent: 'hello' },
     ]);
   });
 
@@ -16,7 +16,7 @@ describe(`fromHTML special cases`, () => {
     expect(fromHTML(html)).toEqual({
       kind: 'block',
       type: 'paragraph',
-      textContent: ' he llo '
+      textContent: ' he llo ',
     });
   });
 
@@ -29,9 +29,9 @@ describe(`fromHTML special cases`, () => {
         {
           kind: 'block',
           type: 'code',
-          textContent: 'var x = 0;'
-        }
-      ]
+          textContent: 'var x = 0;',
+        },
+      ],
     });
   });
 
@@ -48,29 +48,29 @@ describe(`fromHTML special cases`, () => {
             {
               kind: 'inline',
               type: null,
-              textContent: '<div>'
+              textContent: '<div>',
             },
             {
               kind: 'inline',
-              type: 'line-break'
-            },
-            {
-              kind: 'inline',
-              type: null,
-              textContent: '  indented'
-            },
-            {
-              kind: 'inline',
-              type: 'line-break'
+              type: 'line-break',
             },
             {
               kind: 'inline',
               type: null,
-              textContent: '</div>'
-            }
-          ]
-        }
-      ]
+              textContent: '  indented',
+            },
+            {
+              kind: 'inline',
+              type: 'line-break',
+            },
+            {
+              kind: 'inline',
+              type: null,
+              textContent: '</div>',
+            },
+          ],
+        },
+      ],
     });
   });
 
@@ -87,15 +87,15 @@ describe(`fromHTML special cases`, () => {
         children: [
           {
             kind: 'inline',
-            type: 'line-break'
+            type: 'line-break',
           },
           {
             kind: 'inline',
             type: null,
-            textContent: 'Gjennom åhandlehososs'
-          }
-        ]
-      }
+            textContent: 'Gjennom åhandlehososs',
+          },
+        ],
+      },
     ]);
   });
 
@@ -105,13 +105,13 @@ describe(`fromHTML special cases`, () => {
       {
         kind: 'block',
         type: 'container',
-        textContent: '1'
+        textContent: '1',
       },
       {
         kind: 'inline',
         type: 'strong',
-        textContent: '2'
-      }
+        textContent: '2',
+      },
     ]);
   });
 
@@ -121,13 +121,13 @@ describe(`fromHTML special cases`, () => {
       {
         kind: 'block',
         type: 'paragraph',
-        textContent: '1'
+        textContent: '1',
       },
       {
         kind: 'inline',
         type: 'container',
-        textContent: '2'
-      }
+        textContent: '2',
+      },
     ]);
   });
 
@@ -140,15 +140,20 @@ describe(`fromHTML special cases`, () => {
           {
             kind: 'inline',
             type: 'strong',
-            textContent: 'sad'
+            textContent: 'sad',
           },
           {
             kind: 'inline',
             type: null,
-            textContent: 'asd'
-          }
-        ]
+            textContent: 'asd',
+          },
+        ],
       })
     ).toBe(true);
+  });
+
+  it(`can parse a certain paragraph`, () => {
+    const html = `<p>Begi deg ut på veien mot autonom kjøring: De mest moderne systemene hjelper deg med å tilpasse farten, styre og skifte felt, alt etter situasjonen, samt ved fare for kollisjon. Ulykkesrisikoen reduseres – passasjerer og medtrafikanter beskyttes effektivt. Dermed kommer du trygt og avslappet frem.</p>`;
+    expect(typeof fromHTML([html])).toBe('object');
   });
 });

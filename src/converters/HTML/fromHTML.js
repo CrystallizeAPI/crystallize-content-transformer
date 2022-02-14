@@ -51,8 +51,8 @@ function getMetadataFromNode(node) {
   if (node.attrs && node.attrs.length > 0) {
     const validAttrs = helpers.getValidAttributes(node);
     if (validAttrs) {
-      validAttrs.forEach(attr => {
-        const attrOnNode = node.attrs.find(a => a.name === attr);
+      validAttrs.forEach((attr) => {
+        const attrOnNode = node.attrs.find((a) => a.name === attr);
         if (attrOnNode) {
           metadata[attr] = attrOnNode.value;
         }
@@ -117,14 +117,14 @@ function fromHTML(html, opt) {
         if (options.blacklistTags.includes(tagName)) {
           return {
             ...definition,
-            type: 'container'
+            type: 'container',
           };
         }
       } else if (options.whitelistTags) {
         if (!options.whitelistTags.includes(tagName)) {
           return {
             ...definition,
-            type: 'container'
+            type: 'container',
           };
         }
       }
@@ -133,7 +133,7 @@ function fromHTML(html, opt) {
     return (
       definition || {
         kind: 'inline',
-        type: null
+        type: null,
       }
     );
   }
@@ -173,7 +173,9 @@ function fromHTML(html, opt) {
     return null;
   }
 
-  const fragment = parse5.parseFragment(html);
+  const htmlString = Array.isArray(html) ? html.join('') : html;
+
+  const fragment = parse5.parseFragment(htmlString);
 
   if (fragment.childNodes.length === 1) {
     return parsecontentNode(fragment.childNodes[0]);
