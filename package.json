@@ -1,6 +1,6 @@
 {
   "name": "@crystallize/content-transformer",
-  "version": "9.0.1",
+  "version": "7.1.0",
   "description": "Validation and parsing for Crystallize rich text content",
   "main": "src/index.js",
   "engines": {
@@ -14,8 +14,7 @@
     "dev": "nodemon ./develop",
     "dev:inspect": "nodemon --inspect-brk ./develop",
     "validate": "npm run lint && npm run test",
-    "prepush": "npm run validate",
-    "release": "release-it"
+    "prepush": "npm run validate"
   },
   "repository": {
     "type": "git",
@@ -37,8 +36,7 @@
     "husky": "^0.14.3",
     "jest": "^24.9.0",
     "nodemon": "^1.17.5",
-    "prettier": "^2.2.1",
-    "release-it": "7.6.1"
+    "prettier": "^2.2.1"
   },
   "dependencies": {
     "is-my-json-valid": "^2.17.2",
@@ -69,5 +67,12 @@
       "no-plusplus": 0,
       "import/prefer-default-export": 0
     }
+  },
+  "release": {
+    "branches": [
+      "main",
+      "next",
+      "beta"
+    ]
   }
 }
