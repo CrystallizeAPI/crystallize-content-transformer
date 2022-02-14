@@ -10,7 +10,6 @@
     "lint": "eslint src",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepare": "npm run validate",
     "dev": "nodemon ./develop",
     "dev:inspect": "nodemon --inspect-brk ./develop",
     "validate": "npm run lint && npm run test",
