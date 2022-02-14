@@ -1,1 +1,1 @@
-module.exports = require('./src/converters/text/toText');
+module.exports = require('./src/converters/text/to-text');

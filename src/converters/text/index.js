@@ -1,3 +1,3 @@
-const toText = require('./toText');
+const toText = require('./to-text');
 
 module.exports = { toText };

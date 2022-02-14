@@ -1,7 +1,7 @@
-const toHTML = require('./toHTML');
-const fromHTML = require('./fromHTML');
+const toHTML = require('./to-html');
+const fromHTML = require('./from-html');
 
 module.exports = {
   toHTML,
-  fromHTML
+  fromHTML,
 };
