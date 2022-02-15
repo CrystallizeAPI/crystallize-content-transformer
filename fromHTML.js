@@ -1,1 +1,1 @@
-module.exports = require('./src/converters/html-2/from-html');
+module.exports = require('./src/converters/html/from-html');
