@@ -6,11 +6,15 @@ function trim(string) {
     return '';
   }
 
-  // Remove first and last new line
-  return string.replace(/^\r|\n/, '').replace(/\r|\n$/, '');
+  // Remove first and last new lines
+  return string.replace(/^(\r|\n)+/, '').replace(/(\r|\n)+$/, '');
 }
 
-function toText(model) {
+function toText(model, options) {
+  options = options || {
+    keepLineBreaks: false,
+  };
+
   function getTextFromNode(node) {
     if (!node) {
       return '';
@@ -30,6 +34,8 @@ function toText(model) {
 
     if (node.kind === 'block') {
       content = `\n${content}\n`;
+    } else if (options.keepLineBreaks && node.type === 'line-break') {
+      content += '\n';
     }
 
     return content;
